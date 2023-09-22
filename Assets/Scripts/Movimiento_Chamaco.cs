@@ -10,7 +10,9 @@ public class Movimiento_Chamaco : MonoBehaviour
     public float fuerzaSalto = 3.0f;
     public float velocidadCorrer = 10f;
     private Rigidbody2D rb;
-    private bool enSuelo = true;           
+    private bool enSuelo = true;
+    private bool interactuable = true; 
+    private float tiempoDeEspera = 3.0f;
 
     private void Start()
     {

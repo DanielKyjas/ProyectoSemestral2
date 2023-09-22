@@ -5,19 +5,31 @@ using UnityEngine;
 public class Demonio1 : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float velocidad = 3f;
-
+    public float velocidadHorizontal = 3f; 
     public Transform player;
-    // Start is called before the first frame update
+    private bool movimientoDetenido = false;
+
     private void Start()
     {
-            rb = GetComponent<Rigidbody2D>();
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(player.position.x, player.position.y), velocidad * Time.deltaTime);
+        if (!movimientoDetenido)
+        {
+            float direccionHorizontal = Mathf.Sign(player.position.x - transform.position.x);
+            rb.velocity = new Vector2(direccionHorizontal * velocidadHorizontal, rb.velocity.y);
+        }
+    }
+
+    public void CambioMovimiento()
+    {
+        movimientoDetenido = !movimientoDetenido;
+
+        if (movimientoDetenido)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 }
