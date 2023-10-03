@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movimiento_Chamaco : MonoBehaviour
+public class Movimiento_Chamaco1 : MonoBehaviour
 
 {
     [SerializeField]
