@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movimiento_Chamaco1 : MonoBehaviour
 {
     private float velocidadMovimiento = 2.2f;
-    private float fuerzaSalto = 7f;
+    private float fuerzaSalto = 8.5f;
     private float velocidadCorrer = 4.5f;
     private float velocidadEmpujando = 1.2f;
     public float distanciaRaycast = 1.0f;
