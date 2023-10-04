@@ -5,22 +5,49 @@ using UnityEngine;
 public class Demonio1 : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float velocidadHorizontal = 3f; 
+    public float velocidadHorizontal = 3f;
     public Transform player;
     private bool movimientoDetenido = true;
+<<<<<<< HEAD
+=======
+
+    public float distanciaCampoVision = 5f; 
+
+    private Vector3 direccionRayoDerecha; 
+    private Vector3 direccionRayoIzquierda; 
+
+
+>>>>>>> Branch_Daniel
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        direccionRayoDerecha = Vector3.right * distanciaCampoVision;
+        direccionRayoIzquierda = Vector3.left * distanciaCampoVision;
     }
 
     private void Update()
     {
         if (!movimientoDetenido)
         {
-            float direccionHorizontal = Mathf.Sign(player.position.x - transform.position.x);
-            rb.velocity = new Vector2(direccionHorizontal * velocidadHorizontal, rb.velocity.y);
+
+            RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
+            RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
+
+            if (hitDerecha.collider != null || hitIzquierda.collider != null)
+            {
+                Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
+                rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
+
+        Debug.DrawRay(transform.position, direccionRayoDerecha, Color.red);
+        Debug.DrawRay(transform.position, direccionRayoIzquierda, Color.red);
+
     }
 
     public void CambioMovimiento()
