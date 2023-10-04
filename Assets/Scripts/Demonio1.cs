@@ -8,8 +8,7 @@ public class Demonio1 : MonoBehaviour
     public float velocidadHorizontal = 3f;
     public Transform player;
     private bool movimientoDetenido = true;
-<<<<<<< HEAD
-=======
+
 
     public float distanciaCampoVision = 5f; 
 
@@ -17,7 +16,6 @@ public class Demonio1 : MonoBehaviour
     private Vector3 direccionRayoIzquierda; 
 
 
->>>>>>> Branch_Daniel
 
     private void Start()
     {
