@@ -7,7 +7,7 @@ public class Movimiento_Chamaco : MonoBehaviour
 {
     [SerializeField]
     public float velocidadMovimiento = 2f; 
-    public float fuerzaSalto = 3.0f;
+    public float fuerzaSalto = 2f;
     public float velocidadCorrer = 10f;
     private Rigidbody2D rb;
     private bool enSuelo = true;
