@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Suelo
   - Empujable
+  - chamaco
+  - Enemigo
   layers:
   - Default
   - TransparentFX

@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 45366726}
   m_Layer: 0
   m_Name: Demonio1
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &45366730
 MonoBehaviour:
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadHorizontal: 3
   player: {fileID: 526511441}
+  movimientoDetenido: 0
 --- !u!1 &358451947
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,9 +463,12 @@ Transform:
   m_LocalPosition: {x: -10.4861, y: -2.1216, z: 0}
   m_LocalScale: {x: 0.8513421, y: 9.871149, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 980036190}
+  - {fileID: 1411435811}
+  - {fileID: 617989441}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526511437
 GameObject:
@@ -480,7 +484,7 @@ GameObject:
   - component: {fileID: 526511442}
   - component: {fileID: 526511443}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Chamaco
   m_TagString: chamaco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,9 +502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06d5198271665d499eede52a16b5398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 3
-  fuerzaSalto: 10
-  velocidadCorrer: 10
 --- !u!212 &526511440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -561,7 +562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526511437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.64, y: -5.57, z: 0}
+  m_LocalPosition: {x: -7.29, y: -5.66, z: 0}
   m_LocalScale: {x: 0.6223, y: 1.3555, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -718,13 +719,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617989438}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5883, y: -3.96, z: 0}
-  m_LocalScale: {x: 3.7771113, y: 0.62230915, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.881245, y: -0.18623973, z: 0}
+  m_LocalScale: {x: 4.436654, y: 0.06304323, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 470884310}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980036188
 GameObject:
@@ -803,13 +804,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980036188}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -6.75, z: 0}
-  m_LocalScale: {x: 21.3965, y: 0.6223, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.281901, y: -0.46888158, z: 0}
+  m_LocalScale: {x: 25.132668, y: 0.063042305, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 470884310}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &980036191
 BoxCollider2D:
@@ -982,7 +983,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1411435808
 GameObject:
@@ -1087,11 +1088,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411435808}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.4259, y: -2.1693, z: 0}
-  m_LocalScale: {x: 0.7595831, y: 9.595854, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.563568, y: -0.0048322813, z: 0}
+  m_LocalScale: {x: 0.89221835, y: 0.9721111, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 470884310}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
