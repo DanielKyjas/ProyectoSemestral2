@@ -250,8 +250,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45366725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.42, y: -6.08, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.21, y: -5.8832, z: 0}
+  m_LocalScale: {x: 1, y: 1.8548675, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadHorizontal: 3
   player: {fileID: 526511441}
+  distanciaCampoVision: 5
 --- !u!1 &188029050
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +924,7 @@ GameObject:
   - component: {fileID: 526511439}
   - component: {fileID: 526511442}
   - component: {fileID: 526511443}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: chamaco
   m_Icon: {fileID: 0}
@@ -943,7 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMovimiento: 3
-  fuerzaSalto: 7
+  fuerzaSalto: 6
   velocidadCorrer: 7
 --- !u!212 &526511440
 SpriteRenderer:
@@ -1005,7 +1006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526511437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.29, y: -5.92, z: 0}
+  m_LocalPosition: {x: -8.31, y: -5.82, z: 0}
   m_LocalScale: {x: 0.44844684, y: 0.9047042, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
