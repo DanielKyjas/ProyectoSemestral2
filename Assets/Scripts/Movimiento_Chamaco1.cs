@@ -6,90 +6,86 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 {
     private float velocidadMovimiento = 2.2f;
     private float fuerzaSalto = 8.5f;
-private float velocidadCorrer = 4.5f;
-private float velocidadEmpujando = 1.2f;
-public float distanciaRaycast = 1.0f;
-private Rigidbody2D rb;
-private bool enSuelo = true;
-private bool tocandoObjetoEmpujable = false;
-private Demonio1 demon;
+    private float velocidadCorrer = 4.5f;
+    private float velocidadEmpujando = 1.2f;
+    private Rigidbody2D rb;
+    private bool enSuelo = true;
+    private bool tocandoObjetoEmpujable = false;
+    private Demonio1 demon;
 
 
-private void Start()
-{
-    demon = FindObjectOfType<Demonio1>();
-    rb = GetComponent<Rigidbody2D>();
-}
-
-private void Update()
-{
-    Debug.Log(rb.velocity);
-    Debug.Log(enSuelo);
-
-    Debug.Log(demon.movimientoDetenido);
-    Debug.Log(tocandoObjetoEmpujable);
-    movement();
-}
-
-
-private void OnCollisionEnter2D(Collision2D collision)
-{
-
-
-    if (collision.gameObject.CompareTag("Enemigo") && !demon.movimientoDetenido)
+    private void Start()
     {
-
-        Destroy(gameObject);
-
-    }
-    {
-
-    }
-    if (collision.gameObject.CompareTag("Suelo"))
-    {
-        enSuelo = true;
-
+        demon = FindObjectOfType<Demonio1>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    if (collision.gameObject.CompareTag("Empujable"))
+    private void Update()
     {
-        tocandoObjetoEmpujable = true;
-    }
-    else
-    {
-        tocandoObjetoEmpujable = false;
-    }
-}
 
-private void movement()
-{
-
-    float movimientoHorizontal = Input.GetAxis("Horizontal");
-    Vector2 movimiento = new Vector2(movimientoHorizontal, 0);
-
-    if (tocandoObjetoEmpujable)
-    {
-        rb.velocity = new Vector2(movimiento.x * velocidadEmpujando, rb.velocity.y);
+        Debug.Log(demon.movimientoDetenido);
+        Debug.Log(tocandoObjetoEmpujable);
+        movement();
     }
-    else
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.velocity = new Vector2(movimiento.x * velocidadMovimiento, rb.velocity.y);
 
 
-    }
-    if (Input.GetKey(KeyCode.LeftShift))
-    {
-        rb.velocity = new Vector2(movimiento.x * velocidadCorrer, rb.velocity.y);
-    }
-    else
-    {
-        rb.velocity = new Vector2(movimiento.x * velocidadMovimiento, rb.velocity.y);
-    }
-    if (enSuelo && Input.GetKeyDown(KeyCode.Space))
-    {
-        rb.AddForce(new Vector2(1f, 1f).normalized * fuerzaSalto, ForceMode2D.Impulse);
+        if (collision.gameObject.CompareTag("Enemigo") && !demon.movimientoDetenido)
+        {
 
-        enSuelo = false;
+            Destroy(gameObject);
+
+        }
+        {
+
+        }
+        if (collision.gameObject.CompareTag("Suelo"))
+        {
+            enSuelo = true;
+
+        }
+
+        if (collision.gameObject.CompareTag("Empujable"))
+        {
+            tocandoObjetoEmpujable = true;
+        }
+        else
+        {
+            tocandoObjetoEmpujable = false;
+        }
     }
-}
+
+    private void movement()
+    {
+
+        float movimientoHorizontal = Input.GetAxis("Horizontal");
+        Vector2 movimiento = new Vector2(movimientoHorizontal, 0);
+
+        if (tocandoObjetoEmpujable)
+        {
+            rb.velocity = new Vector2(movimiento.x * velocidadEmpujando, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(movimiento.x * velocidadMovimiento, rb.velocity.y);
+
+
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            rb.velocity = new Vector2(movimiento.x * velocidadCorrer, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(movimiento.x * velocidadMovimiento, rb.velocity.y);
+        }
+        if (enSuelo && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(new Vector2(1f, 1f).normalized * fuerzaSalto, ForceMode2D.Impulse);
+
+            enSuelo = false;
+        }
+    }
 }
