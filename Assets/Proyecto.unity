@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 45366726}
   m_Layer: 0
   m_Name: Demonio1
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadHorizontal: 3
   player: {fileID: 526511441}
+  movimientoDetenido: 1
   distanciaCampoVision: 5
 --- !u!1 &358451947
 GameObject:
