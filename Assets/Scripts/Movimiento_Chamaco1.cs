@@ -8,38 +8,26 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private float fuerzaSalto = 8.5f;
     private float velocidadCorrer = 4.5f;
     private float velocidadEmpujando = 1.2f;
+    public float distanciaRaycast = 1.0f;
     private Rigidbody2D rb;
     private bool enSuelo = true;
     private bool tocandoObjetoEmpujable = false;
-    private Demonio1 demon;
-    
-
     private void Start()
     {
-        demon = FindObjectOfType<Demonio1>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
- 
-        Debug.Log(demon.movimientoDetenido);
+        Debug.Log(rb.velocity);
+        Debug.Log(enSuelo);
         Debug.Log(tocandoObjetoEmpujable);
         movement();
     }
-        
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-
-        if (collision.gameObject.CompareTag("Enemigo")&& ! demon.movimientoDetenido ){
-
-            Destroy(gameObject);
-
-        }
-        {
-
-        }
         if (collision.gameObject.CompareTag("Suelo"))
         {
             enSuelo = true;
