@@ -10,10 +10,10 @@ public class Demonio1 : MonoBehaviour
     private bool movimientoDetenido = true;
 
 
-    public float distanciaCampoVision = 5f; 
+    public float distanciaCampoVision = 5f;
 
-    private Vector3 direccionRayoDerecha; 
-    private Vector3 direccionRayoIzquierda; 
+    private Vector3 direccionRayoDerecha;
+    private Vector3 direccionRayoIzquierda;
 
 
 
