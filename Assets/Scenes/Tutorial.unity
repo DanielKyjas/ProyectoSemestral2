@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 45366726}
   m_Layer: 0
   m_Name: Demonio1
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadHorizontal: 3
   player: {fileID: 526511441}
+  movimientoDetenido: 1
   distanciaCampoVision: 5
 --- !u!1 &188029050
 GameObject:
@@ -940,12 +941,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 526511437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06d5198271665d499eede52a16b5398, type: 3}
+  m_Script: {fileID: 11500000, guid: e2d638a95336d2c41ba49a6d5581a826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 3
-  fuerzaSalto: 6
-  velocidadCorrer: 7
 --- !u!212 &526511440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1043,7 +1041,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 526511437}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 869a6e602234aff40a0b21ea4d3e7022, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1198,7 +1196,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 674906483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977a2557bcd8aba478b6cf13b2c653d7, type: 3}
+  m_Script: {fileID: 11500000, guid: b82473b95b1d7c74b9399b46be4709c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nombreEscenaDestino: Vestibulo
