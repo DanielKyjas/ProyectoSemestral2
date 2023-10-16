@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Suelo
   - Empujable
+<<<<<<< Updated upstream
+=======
+  - chamaco
+  - Enemigo
+  - Techo
+  - Objeto
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
