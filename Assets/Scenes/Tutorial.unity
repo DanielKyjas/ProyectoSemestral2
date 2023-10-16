@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadHorizontal: 3
   player: {fileID: 526511441}
+  movimientoDetenido: 1
   distanciaCampoVision: 5
 --- !u!1 &188029050
 GameObject:
@@ -940,12 +941,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 526511437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06d5198271665d499eede52a16b5398, type: 3}
+  m_Script: {fileID: 11500000, guid: 1031acfcb0683dc4a97c14967c5d4174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 3
-  fuerzaSalto: 6
-  velocidadCorrer: 7
 --- !u!212 &526511440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1844,6 +1842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600317178}
   - component: {fileID: 1600317177}
+  - component: {fileID: 1600317179}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1918,3 +1917,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600317179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600317176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977a2557bcd8aba478b6cf13b2c653d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreEscenaDestino: Vestibulo
