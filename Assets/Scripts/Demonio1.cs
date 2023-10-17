@@ -7,20 +7,12 @@ public class Demonio1 : MonoBehaviour
     private Rigidbody2D rb;
     public float velocidadHorizontal = 3f;
     public Transform player;
-<<<<<<< Updated upstream
     private bool movimientoDetenido = true;
 
     public float distanciaCampoVision = 5f; 
 
     private Vector3 direccionRayoDerecha; 
     private Vector3 direccionRayoIzquierda; 
-=======
-    public bool movimientoDetenido = true;
-    public float distanciaCampoVision = 5f;
-
-    private Vector3 direccionRayoDerecha;
-    private Vector3 direccionRayoIzquierda;
->>>>>>> Stashed changes
 
 
 
@@ -35,7 +27,7 @@ public class Demonio1 : MonoBehaviour
     {
         if (!movimientoDetenido)
         {
-            gameObject.tag = "Enemigo";
+
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
             RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
 
@@ -46,7 +38,6 @@ public class Demonio1 : MonoBehaviour
             }
             else
             {
-                gameObject.tag = "Objeto";
                 rb.velocity = Vector2.zero;
             }
         }
@@ -54,9 +45,7 @@ public class Demonio1 : MonoBehaviour
         Debug.DrawRay(transform.position, direccionRayoDerecha, Color.red);
         Debug.DrawRay(transform.position, direccionRayoIzquierda, Color.red);
 
- 
     }
-
 
     public void CambioMovimiento()
     {
@@ -67,10 +56,4 @@ public class Demonio1 : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
-<<<<<<< Updated upstream
 }
-=======
-
-
-}
->>>>>>> Stashed changes
