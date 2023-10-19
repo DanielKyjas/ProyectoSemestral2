@@ -8,6 +8,7 @@ public class Portal : MonoBehaviour
     private bool canTeleport = false;
     private Demonio1 demonio;
     private Demonio2 araña;
+    private Demonio_volador mosca;
     private Movimiento_Chamaco1 chamaco;
 
 
@@ -16,6 +17,7 @@ public class Portal : MonoBehaviour
         demonio = FindObjectOfType<Demonio1>();
         araña = FindObjectOfType<Demonio2>();
         chamaco = FindAnyObjectByType<Movimiento_Chamaco1>();
+        mosca = FindAnyObjectByType<Demonio_volador>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,6 +44,10 @@ public class Portal : MonoBehaviour
             if (chamaco != null)
             {
                 chamaco.cambioDeMundo();
+            }
+            if (mosca != null)
+            {
+                mosca.CambioMovimiento();
             }
         }
     }

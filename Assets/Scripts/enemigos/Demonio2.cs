@@ -10,7 +10,7 @@ public class Demonio2 : MonoBehaviour
     public Transform player;
     public bool movimientoDetenido = true;
     private bool tocosuelo = false;
-    public float distanciaCampoVision = 3f;
+    public float distanciaCampoVision = 2f;
     public float distanciaCampoVision2 = 10f;
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
@@ -29,20 +29,18 @@ public class Demonio2 : MonoBehaviour
 
     private void Update()
     {
+        RaycastHit2D hitAbajo2 = Physics2D.Raycast(transform.position, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
+        if (hitAbajo2.collider != null)
+        {
+            bC.isTrigger = false;
+            SpriteRenderer spriteRenderer = hitAbajo2.collider.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.enabled = true;
+            }
+        }
         if (movimientoDetenido)
         {
-            RaycastHit2D hitAbajo = Physics2D.Raycast(transform.position, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
-
-            if (hitAbajo.collider != null)
-            {
-                bC.isTrigger = false;
-                SpriteRenderer spriteRenderer = hitAbajo.collider.GetComponent<SpriteRenderer>();
-                if (spriteRenderer != null)
-                {
-                    spriteRenderer.enabled = true;
-                }
-            }
-
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
         if (!movimientoDetenido)
@@ -65,7 +63,7 @@ public class Demonio2 : MonoBehaviour
             if (hitDerecha.collider == null && tocosuelo == true || hitIzquierda.collider == null && tocosuelo == true)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-                rb.velocity = new Vector2(rb.velocity.x, 1f);
+                rb.velocity = new Vector2(rb.velocity.x, 10f);
             }
         }
 
@@ -83,7 +81,7 @@ public class Demonio2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Techo"))
         {
             tocosuelo = false;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
         }
     }
         public void CambioMovimiento()
