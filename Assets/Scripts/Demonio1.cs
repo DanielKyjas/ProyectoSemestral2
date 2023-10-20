@@ -7,7 +7,7 @@ public class Demonio1 : MonoBehaviour
     private Rigidbody2D rb;
     public float velocidadHorizontal = 3f; 
     public Transform player;
-    public bool movimientoDetenido = true;
+    public bool movimientoDetenido = false;
 
     private void Start()
     {
