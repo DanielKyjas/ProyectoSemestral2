@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Habilidades_chamaco : MonoBehaviour
+public class Lanzar_Piedra : MonoBehaviour
 {
-    public float potenciaMaxima = 10.0f; 
+    public float potenciaMaxima = 10.0f;
     private Vector2 inicioArrastre;
     private Vector2 finArrastre;
     private Vector2 direccionLanzamiento;
@@ -32,6 +32,7 @@ public class Habilidades_chamaco : MonoBehaviour
 
             arrastrando = false;
         }
+    
     }
 
 }
