@@ -384,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264129401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.47, y: -3.74, z: 0}
+  m_LocalPosition: {x: -7.09, y: -3.82, z: 0}
   m_LocalScale: {x: 0.44844684, y: 0.9047042, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -616,7 +616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.37, y: -0.05, z: -10}
+  m_LocalPosition: {x: 0.41, y: -0.15, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -821,7 +821,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1589299585}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961637155
 GameObject:
@@ -957,6 +957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 983076377}
   - component: {fileID: 983076376}
+  - component: {fileID: 983076378}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -1031,6 +1032,32 @@ Transform:
   m_Father: {fileID: 1589299585}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &983076378
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983076375}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1115563977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,8 +1610,9 @@ GameObject:
   - component: {fileID: 1466551684}
   - component: {fileID: 1466551683}
   - component: {fileID: 1466551686}
+  - component: {fileID: 1466551687}
   m_Layer: 7
-  m_Name: Objeto2
+  m_Name: plataformaOculta
   m_TagString: Suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1650,12 +1678,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466551682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.15, y: -1.6100001, z: 0.3810465}
+  m_LocalPosition: {x: 6.34, y: -1.02, z: 0.3810465}
   m_LocalScale: {x: 6.80666, y: 0.78992677, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1589299585}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1466551686
 BoxCollider2D:
@@ -1683,6 +1711,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1466551687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466551682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76746359f5ede944aa796b388ece7ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1466551683}
+  bC: {fileID: 1466551686}
 --- !u!1 &1531053954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,8 +1847,9 @@ GameObject:
   - component: {fileID: 1566334355}
   - component: {fileID: 1566334354}
   - component: {fileID: 1566334353}
+  - component: {fileID: 1566334356}
   m_Layer: 7
-  m_Name: Objeto
+  m_Name: plataformaOculta
   m_TagString: Suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1898,13 +1941,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566334352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5726, y: -1.2833002, z: 0.5010465}
+  m_LocalPosition: {x: -5.27, y: 0.17, z: 0.5010465}
   m_LocalScale: {x: 4.36133, y: 0.6894745, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1589299585}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1566334356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566334352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76746359f5ede944aa796b388ece7ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1566334354}
+  bC: {fileID: 1566334353}
 --- !u!1 &1589299584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,8 +1994,8 @@ Transform:
   - {fileID: 2119611374}
   - {fileID: 1741322060}
   - {fileID: 1531053956}
-  - {fileID: 1466551684}
   - {fileID: 872583062}
+  - {fileID: 1466551684}
   - {fileID: 1566334355}
   - {fileID: 4391787058243806664}
   - {fileID: 961637158}
@@ -2635,13 +2692,25 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 264129406}
+    - target: {fileID: 4391787058797445316, guid: 4959e186da6388f44a95359f15200f42, type: 3}
+      propertyPath: bC.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391787058797445316, guid: 4959e186da6388f44a95359f15200f42, type: 3}
+      propertyPath: bC.Array.data[0]
+      value: 
+      objectReference: {fileID: 1466551686}
+    - target: {fileID: 4391787058797445316, guid: 4959e186da6388f44a95359f15200f42, type: 3}
+      propertyPath: bC.Array.data[1]
+      value: 
+      objectReference: {fileID: 1566334353}
     - target: {fileID: 4391787058797445318, guid: 4959e186da6388f44a95359f15200f42, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4391787058797445318, guid: 4959e186da6388f44a95359f15200f42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.82
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 4391787058797445318, guid: 4959e186da6388f44a95359f15200f42, type: 3}
       propertyPath: m_LocalPosition.y

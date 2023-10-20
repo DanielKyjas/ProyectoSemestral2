@@ -26,22 +26,22 @@ public class Demonio_volador : MonoBehaviour
         if (movimientoDetenido)
         {
             speed = 10f;
-            moverseEnCirculos();
+            MoverseEnCirculos();
         }
-        if (!movimientoDetenido) { 
+        if (!movimientoDetenido) {
             speed = 1f;
-
             if (distancia < 5.0f)
             {
-               
+
                 transform.position = Vector2.MoveTowards(transform.position, chamaco.position, speed * Time.deltaTime);
             }
             else
             {
-                
+
                 transform.position = origen.position;
-                moverseEnCirculos();
-            }
+                MoverseEnCirculos();
+            
+        }
         }
 
    
@@ -52,7 +52,7 @@ public class Demonio_volador : MonoBehaviour
         movimientoDetenido = !movimientoDetenido;
     }
 
-    private void moverseEnCirculos()
+    private void MoverseEnCirculos()
     {
         if (radio > 0)
         {
