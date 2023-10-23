@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class Movimiento_Chamaco1 : MonoBehaviour
@@ -12,34 +11,30 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private Rigidbody2D rb;
     private bool enSuelo = true;
     private bool tocandoObjetoEmpujable = false;
-    private Demonio1 demon;
-
+    private bool mundoCambiado = true;
 
     private void Start()
     {
-        demon = FindObjectOfType<Demonio1>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-
         movement();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
+       if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
+            {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = false;
+            Collider2D collider = GetComponent<Collider2D>();
+                collider.enabled = false;
 
-        if (collision.gameObject.CompareTag("Enemigo") && !demon.movimientoDetenido)
-        {
-
-            Destroy(gameObject);
-
-        }
-        {
-
-        }
+            }
+        
         if (collision.gameObject.CompareTag("Suelo"))
         {
             enSuelo = true;
@@ -87,4 +82,9 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             enSuelo = false;
         }
     }
+    public void cambioDeMundo()
+    {
+        mundoCambiado = !mundoCambiado;
+    }
 }
+

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class Demonio1 : MonoBehaviour
@@ -8,28 +7,32 @@ public class Demonio1 : MonoBehaviour
     private Rigidbody2D rb;
     public float velocidadHorizontal = 3f;
     public Transform player;
-    public bool movimientoDetenido = true;
-
+    private bool movimientoDetenido = true;
 
     public float distanciaCampoVision = 5f;
 
-    private Vector3 direccionRayoDerecha;
-    private Vector3 direccionRayoIzquierda;
+    private Vector2 direccionRayoDerecha;
+    private Vector2 direccionRayoIzquierda;
+
 
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        direccionRayoDerecha = Vector3.right * distanciaCampoVision;
-        direccionRayoIzquierda = Vector3.left * distanciaCampoVision;
+        direccionRayoDerecha = Vector2.right * distanciaCampoVision;
+        direccionRayoIzquierda = Vector2.left * distanciaCampoVision;
     }
 
     private void Update()
     {
-        if (!movimientoDetenido)
+        if (movimientoDetenido)
         {
-
+            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        }
+            if (!movimientoDetenido)
+        {
+            gameObject.tag = "Enemigo";
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
             RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
 
@@ -40,12 +43,18 @@ public class Demonio1 : MonoBehaviour
             }
             else
             {
+                gameObject.tag = "Objeto";
                 rb.velocity = Vector2.zero;
+
             }
         }
 
+        Debug.DrawRay(transform.position, direccionRayoDerecha, Color.red);
+        Debug.DrawRay(transform.position, direccionRayoIzquierda, Color.red);
+
 
     }
+
 
     public void CambioMovimiento()
     {
@@ -57,3 +66,4 @@ public class Demonio1 : MonoBehaviour
         }
     }
 }
+
