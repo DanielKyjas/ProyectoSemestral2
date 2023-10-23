@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class Movimiento_Chamaco1 : MonoBehaviour
@@ -24,6 +23,8 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private void Update()
     {
 
+        Debug.Log(demon.movimientoDetenido);
+        Debug.Log(tocandoObjetoEmpujable);
         movement();
     }
 

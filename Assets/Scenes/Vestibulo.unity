@@ -136,8 +136,8 @@ GameObject:
   - component: {fileID: 264129404}
   - component: {fileID: 264129403}
   - component: {fileID: 264129402}
-  m_Layer: 0
-  m_Name: Square (6)
+  m_Layer: 6
+  m_Name: Chamaco
   m_TagString: chamaco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,12 +199,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 264129401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06d5198271665d499eede52a16b5398, type: 3}
+  m_Script: {fileID: 11500000, guid: 1031acfcb0683dc4a97c14967c5d4174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 3
-  fuerzaSalto: 7
-  velocidadCorrer: 7
 --- !u!212 &264129405
 SpriteRenderer:
   m_ObjectHideFlags: 0
