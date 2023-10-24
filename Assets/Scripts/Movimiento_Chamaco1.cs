@@ -12,7 +12,6 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private bool enSuelo = true;
     private bool tocandoObjetoEmpujable = false;
     private bool mundoCambiado = true;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,6 +19,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 
     private void Update()
     {
+
         movement();
     }
 
