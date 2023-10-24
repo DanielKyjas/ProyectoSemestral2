@@ -82,6 +82,10 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             enSuelo = false;
         }
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     public void CambioDeMundo()
     {
         mundoCambiado = !mundoCambiado;

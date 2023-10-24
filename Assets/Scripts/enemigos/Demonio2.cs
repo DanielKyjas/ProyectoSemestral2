@@ -16,7 +16,7 @@ public class Demonio2 : MonoBehaviour
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
     private Vector2 direccionRayoAbajo;
-    
+
 
 
     private void Start()
@@ -35,8 +35,13 @@ public class Demonio2 : MonoBehaviour
         RaycastHit2D hitAbajo2 = Physics2D.Raycast(puntoInicial, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
         if (hitAbajo2.collider != null)
         {
+<<<<<<< Updated upstream
             
              BoxCollider2D boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
+=======
+
+            BoxCollider2D boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
+>>>>>>> Stashed changes
             if (boxCollider != null)
             {
                 boxCollider.isTrigger = false;
@@ -52,6 +57,10 @@ public class Demonio2 : MonoBehaviour
             if (!tocoTecho)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
+<<<<<<< Updated upstream
+=======
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+>>>>>>> Stashed changes
             }
             else
             {
@@ -102,10 +111,11 @@ public class Demonio2 : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
         }
     }
-        public void CambioMovimiento()
+    public void CambioMovimiento()
     {
         movimientoDetenido = !movimientoDetenido;
     }
     
+
 
 }

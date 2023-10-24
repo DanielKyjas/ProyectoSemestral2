@@ -384,7 +384,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264129401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: -7.09, y: -3.82, z: 0}
+=======
+  m_LocalPosition: {x: -6.43, y: -3.67, z: 0}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 0.44844684, y: 0.9047042, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -518,7 +522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320487938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8199997, y: 0.93000007, z: 0.3090356}
+  m_LocalPosition: {x: 2.08, y: 0.18, z: 0.3090356}
   m_LocalScale: {x: 1.3355, y: 1.5033, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -616,7 +620,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0.41, y: -0.15, z: -10}
+=======
+  m_LocalPosition: {x: 0.21, y: -0.12, z: -10}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1720,11 +1728,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466551682}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: 76746359f5ede944aa796b388ece7ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1466551683}
   bC: {fileID: 1466551686}
+=======
+  m_Script: {fileID: 11500000, guid: 31c596d19730a6d45b510f37e4e1644b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &1531053954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,11 +1971,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1566334352}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: 76746359f5ede944aa796b388ece7ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1566334354}
   bC: {fileID: 1566334353}
+=======
+  m_Script: {fileID: 11500000, guid: 31c596d19730a6d45b510f37e4e1644b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> Stashed changes
 --- !u!1 &1589299584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,6 +2032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1605612423}
   - component: {fileID: 1605612422}
+  - component: {fileID: 1605612424}
   m_Layer: 0
   m_Name: Square (4)
   m_TagString: Untagged
@@ -2086,6 +2107,32 @@ Transform:
   m_Father: {fileID: 176940055}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1605612424
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605612421}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1627012606
 GameObject:
   m_ObjectHideFlags: 0

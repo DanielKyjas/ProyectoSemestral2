@@ -20,6 +20,10 @@ public class Portal : MonoBehaviour
         chamaco = FindAnyObjectByType<Movimiento_Chamaco1>();
         mosca = FindAnyObjectByType<Demonio_volador>();
         plataforma = FindObjectsOfType<plataformaOculta>();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -51,7 +55,11 @@ public class Portal : MonoBehaviour
             {
                 mosca.CambioMovimiento();
             }
+<<<<<<< Updated upstream
             if(plataforma != null)
+=======
+            if (plataforma != null)
+>>>>>>> Stashed changes
             {
                 foreach (var plataformaOculta in plataforma)
                 {
