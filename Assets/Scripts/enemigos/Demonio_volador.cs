@@ -11,8 +11,6 @@ public class Demonio_volador : MonoBehaviour
     private float radio = 2.0f;
     private float angulo = 0.0f;
     private float distancia;
-    private float coolDownTime = 2;
-    private float nextAssault = 0;
 
     void Start()
     {
@@ -30,12 +28,7 @@ public class Demonio_volador : MonoBehaviour
             speed = 10f;
             MoverseEnCirculos();
         }
-<<<<<<< Updated upstream
         if (!movimientoDetenido) {
-=======
-        if (!movimientoDetenido)
-        {
->>>>>>> Stashed changes
             speed = 1f;
             if (distancia < 5.0f)
             {
@@ -45,23 +38,13 @@ public class Demonio_volador : MonoBehaviour
             else
             {
 
-<<<<<<< Updated upstream
                 transform.position = origen.position;
                 MoverseEnCirculos();
             
         }
-=======
-                transform.position = Vector2.MoveTowards(transform.position, origen.position, speed * Time.deltaTime);
-                moverseEnCirculos();
-            }
-            if (distancia < 2.0f)
-            {
-                Embestida();
-            }
->>>>>>> Stashed changes
         }
 
-
+   
     }
 
     public void CambioMovimiento()
@@ -79,23 +62,4 @@ public class Demonio_volador : MonoBehaviour
             transform.position = new Vector2(origen.position.x + x, origen.position.y + y);
         }
     }
-    private void Embestida()
-    {
-        if (Time.time > nextAssault)
-        {
-            speed = 5f;
-            transform.position = Vector2.MoveTowards(transform.position, chamaco.position, speed * Time.deltaTime);
-            nextAssault = Time.time + coolDownTime;
-        }
-
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Destruible"))
-        {
-            Destroy(collision.gameObject);
-        }
-    }
-
 }
- 
