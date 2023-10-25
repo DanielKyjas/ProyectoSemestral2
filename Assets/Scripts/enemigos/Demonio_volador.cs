@@ -8,6 +8,7 @@ public class Demonio_volador : MonoBehaviour
     [SerializeField] Transform origen;
     private float speed = 3.0f;
     private bool movimientoDetenido = true;
+    private bool isInOriginn = true;
     private float radio = 2.0f;
     private float angulo = 0.0f;
     private float distancia;
@@ -35,13 +36,21 @@ public class Demonio_volador : MonoBehaviour
 
                 transform.position = Vector2.MoveTowards(transform.position, chamaco.position, speed * Time.deltaTime);
             }
+            if (distancia < 2.0f)
+            {
+
+            }
             else
             {
 
-                transform.position = origen.position;
-                MoverseEnCirculos();
+                transform.position = Vector2.MoveTowards(transform.position, origen.position, speed * Time.deltaTime);
+                if (Vector2.Distance(transform.position, origen.position) < 2f)
+                {
+           
+                    MoverseEnCirculos();
+                }
             
-        }
+            }
         }
 
    

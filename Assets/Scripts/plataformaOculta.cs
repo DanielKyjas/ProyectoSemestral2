@@ -14,7 +14,6 @@ public class plataformaOculta : MonoBehaviour
         bC.GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -25,12 +24,12 @@ public class plataformaOculta : MonoBehaviour
         if (mundoCambiado)
         {
             sprite.enabled = false;
-            bC.isTrigger = false;
+            bC.isTrigger = true;
         }
         if (!mundoCambiado)
         {
             sprite.enabled = true;
-            bC.isTrigger = true;
+            bC.isTrigger = false;
         }
     }
 }

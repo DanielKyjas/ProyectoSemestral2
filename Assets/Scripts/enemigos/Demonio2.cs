@@ -16,7 +16,9 @@ public class Demonio2 : MonoBehaviour
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
     private Vector2 direccionRayoAbajo;
-    
+    private BoxCollider2D boxCollider;
+    private SpriteRenderer spriteRenderer;
+
 
 
     private void Start()
@@ -26,6 +28,8 @@ public class Demonio2 : MonoBehaviour
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
         direccionRayoIzquierda = Vector2.left * distanciaCampoVision;
         direccionRayoAbajo = Vector2.down * distanciaCampoVision2;
+        boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
@@ -36,7 +40,7 @@ public class Demonio2 : MonoBehaviour
         if (hitAbajo2.collider != null)
         {
             
-             BoxCollider2D boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
+             boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
             if (boxCollider != null)
             {
                 boxCollider.isTrigger = false;

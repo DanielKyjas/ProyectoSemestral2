@@ -27,7 +27,9 @@ public class Portal : MonoBehaviour
         if (collision.gameObject.CompareTag(Target))
         {
             canTeleport = true;
+
         }
+
     }
 
 
@@ -57,7 +59,10 @@ public class Portal : MonoBehaviour
                 {
                     plataformaOculta.CambioDeMundo();
                 }
+                canTeleport = false;
             }
+            
+        
         }
     }
 }
