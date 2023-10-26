@@ -12,6 +12,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private bool enSuelo = true;
     private bool tocandoObjetoEmpujable = false;
     private bool mundoCambiado = true;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,8 +20,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 
     private void Update()
     {
-
-        movement();
+        Movement();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -51,11 +51,11 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
     }
 
-    private void movement()
+    private void Movement()
     {
-
+        
         float movimientoHorizontal = Input.GetAxis("Horizontal");
-        Vector2 movimiento = new Vector2(movimientoHorizontal, 0);
+        Vector2 movimiento = new(movimientoHorizontal, 0);
 
         if (tocandoObjetoEmpujable)
         {
@@ -82,7 +82,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             enSuelo = false;
         }
     }
-    public void cambioDeMundo()
+    public void CambioDeMundo()
     {
         mundoCambiado = !mundoCambiado;
     }
