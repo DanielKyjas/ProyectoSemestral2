@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Demonio2 : MonoBehaviour
 {
-    private Rigidbody2D rb;
+private Rigidbody2D rb;
 
     public float velocidadHorizontal = 3f;
     public Transform player;
@@ -110,6 +110,6 @@ public class Demonio2 : MonoBehaviour
     {
         movimientoDetenido = !movimientoDetenido;
     }
-    
+
 
 }
