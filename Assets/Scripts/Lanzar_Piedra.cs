@@ -10,34 +10,38 @@ public class Lanzar_Piedra : MonoBehaviour
     private Vector2 finArrastre;
     private Vector2 direccionLanzamiento;
     private float potenciaLanzamiento;
-    private bool piedraRecogida = true;  
+    private bool piedraRecogida;  
     public GameObject piedraPrefab;
     private GameObject piedraActual;
+    private PiedraScript piedra;
 
 
     void Start()
     {
+        
     }
 
     void Update()
     {
-        if (piedraRecogida == true)
+        if ( piedra != null)
         {
+
             Lanzar();
         }
-      
+        if (Input.GetMouseButtonDown(0))
+        {
+            GenerarObjeto();
+            inicioArrastre = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Debug.Log(piedra.tocada);
+        }
+
     }
 
 
     private void Lanzar()
     {
-        if (Input.GetMouseButtonDown(0) )
-        {
-            GenerarObjeto();
-            inicioArrastre = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-
-        if (Input.GetMouseButtonUp(0))
+     
+        if (Input.GetMouseButtonUp(0) && piedra.tocada)
         {
             finArrastre = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             direccionLanzamiento = (finArrastre - inicioArrastre).normalized;
@@ -45,20 +49,17 @@ public class Lanzar_Piedra : MonoBehaviour
             Rigidbody2D rb = piedraActual.GetComponent<Rigidbody2D>();
             rb.velocity = Vector2.zero;
             rb.AddForce(direccionLanzamiento * potenciaLanzamiento, ForceMode2D.Impulse);
+            piedra.tocada = false;
         }
 
     }
     private void GenerarObjeto()
     {
         piedraActual = Instantiate(piedraPrefab, transform.position, Quaternion.identity);
+        piedra = piedraActual.GetComponent<PiedraScript>();
+       
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Piedra"))
-        {
-            piedraRecogida = true;
-        }
-    }
+ 
 
 }
 

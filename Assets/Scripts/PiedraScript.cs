@@ -5,8 +5,8 @@ using UnityEngine;
 public class PiedraScript : MonoBehaviour
 {
 
-
-    public bool tocada = false; 
+    private float julio = 5.0f;
+    public bool tocada = true; 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -14,9 +14,11 @@ public class PiedraScript : MonoBehaviour
         {
             if (!tocada)
             {
-                Destroy(gameObject); 
-                tocada = true; 
+
+                Destroy(gameObject, julio);
+                tocada = true;
             }
+            
         }
     }
 
