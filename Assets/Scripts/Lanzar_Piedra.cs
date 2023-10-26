@@ -10,8 +10,7 @@ public class Lanzar_Piedra : MonoBehaviour
     private Vector2 finArrastre;
     private Vector2 direccionLanzamiento;
     private float potenciaLanzamiento;
-    private bool arrastrando = false;
-    private bool piedraRecogida = true;  // Inicialmente, la piedra está recogida
+    private bool piedraRecogida = true;  
     public GameObject piedraPrefab;
     private GameObject piedraActual;
 
@@ -22,16 +21,23 @@ public class Lanzar_Piedra : MonoBehaviour
 
     void Update()
     {
-        Vector2 posicionActual = transform.position;
-        if (Input.GetMouseButtonDown(0)&&piedraRecogida)
+        if (piedraRecogida == true)
         {
+            Lanzar();
+        }
+      
+    }
 
+
+    private void Lanzar()
+    {
+        if (Input.GetMouseButtonDown(0) )
+        {
             GenerarObjeto();
             inicioArrastre = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            arrastrando = true;
         }
 
-        if (Input.GetMouseButtonUp(0) && arrastrando && !piedraRecogida)
+        if (Input.GetMouseButtonUp(0))
         {
             finArrastre = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             direccionLanzamiento = (finArrastre - inicioArrastre).normalized;
@@ -39,18 +45,16 @@ public class Lanzar_Piedra : MonoBehaviour
             Rigidbody2D rb = piedraActual.GetComponent<Rigidbody2D>();
             rb.velocity = Vector2.zero;
             rb.AddForce(direccionLanzamiento * potenciaLanzamiento, ForceMode2D.Impulse);
-            
         }
-    }
 
+    }
     private void GenerarObjeto()
     {
-        piedraActual=Instantiate(piedraPrefab, transform.position, Quaternion.identity);
-        piedraRecogida = false;
+        piedraActual = Instantiate(piedraPrefab, transform.position, Quaternion.identity);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("chamaco"))
+        if (collision.gameObject.CompareTag("Piedra"))
         {
             piedraRecogida = true;
         }

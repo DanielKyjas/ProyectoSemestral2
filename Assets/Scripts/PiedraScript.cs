@@ -6,7 +6,7 @@ public class PiedraScript : MonoBehaviour
 {
 
 
-    private bool tocada = false; // Variable para rastrear si la piedra ha sido tocada.
+    public bool tocada = false; 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
