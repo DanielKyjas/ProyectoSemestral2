@@ -4,35 +4,47 @@ using UnityEngine;
 
 public class Demonio2 : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    [SerializeField]private BoxCollider2D bC;
+private Rigidbody2D rb;
+
     public float velocidadHorizontal = 3f;
     public Transform player;
     public bool movimientoDetenido = true;
     private bool tocosuelo = false;
+    private bool tocoTecho = false;
     public float distanciaCampoVision = 2f;
     public float distanciaCampoVision2 = 10f;
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
     private Vector2 direccionRayoAbajo;
-    
+    private BoxCollider2D boxCollider;
+    private SpriteRenderer spriteRenderer;
+
 
 
     private void Start()
     {
-        bC = GameObject.Find("Objeto").GetComponent<BoxCollider2D>();
+
         rb = GetComponent<Rigidbody2D>();
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
         direccionRayoIzquierda = Vector2.left * distanciaCampoVision;
         direccionRayoAbajo = Vector2.down * distanciaCampoVision2;
+        boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     private void Update()
     {
-        RaycastHit2D hitAbajo2 = Physics2D.Raycast(transform.position, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
+        Vector2 puntoInicial = new(transform.position.x, transform.position.y - 2.0f);
+        RaycastHit2D hitAbajo2 = Physics2D.Raycast(puntoInicial, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
         if (hitAbajo2.collider != null)
         {
-            bC.isTrigger = false;
+            
+             boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
+            if (boxCollider != null)
+            {
+                boxCollider.isTrigger = false;
+            }
             SpriteRenderer spriteRenderer = hitAbajo2.collider.GetComponent<SpriteRenderer>();
             if (spriteRenderer != null)
             {
@@ -41,8 +53,16 @@ public class Demonio2 : MonoBehaviour
         }
         if (movimientoDetenido)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            if (!tocoTecho)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 5f);
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            }
         }
+
         if (!movimientoDetenido)
         {
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
@@ -52,6 +72,7 @@ public class Demonio2 : MonoBehaviour
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(rb.velocity.x, -5f);
+                tocoTecho = false;
             }
             if (hitDerecha.collider != null || hitIzquierda.collider != null)
             {
@@ -63,7 +84,7 @@ public class Demonio2 : MonoBehaviour
             if (hitDerecha.collider == null && tocosuelo == true || hitIzquierda.collider == null && tocosuelo == true)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-                rb.velocity = new Vector2(rb.velocity.x, 10f);
+                rb.velocity = new Vector2(rb.velocity.x, 5f);
             }
         }
 
@@ -81,6 +102,7 @@ public class Demonio2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Techo"))
         {
             tocosuelo = false;
+            tocoTecho = true;
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
         }
     }
@@ -88,5 +110,6 @@ public class Demonio2 : MonoBehaviour
     {
         movimientoDetenido = !movimientoDetenido;
     }
+
 
 }
