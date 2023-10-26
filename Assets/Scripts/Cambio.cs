@@ -3,18 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class Cambio : MonoBehaviour
 {
-    public string nombreEscenaDestino = "Vestibulo";
+    public string EscenaDestino = "Vestibulo";
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("chamaco"))
         {
-            CambiarAEscena(nombreEscenaDestino);
+            CambiarAEscena(EscenaDestino);
         }
     }
 
-    public void CambiarAEscena(string nombreEscena)
+    public void CambiarAEscena(string EscenaNueva)
     {
-        SceneManager.LoadScene(nombreEscena);
+        SceneManager.LoadScene(EscenaNueva);
     }
 }
