@@ -32,6 +32,7 @@ public class Demonio1 : MonoBehaviour
         }
             if (!movimientoDetenido)
         {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             gameObject.tag = "Enemigo";
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
             RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
@@ -43,7 +44,6 @@ public class Demonio1 : MonoBehaviour
             }
             else
             {
-                gameObject.tag = "Objeto";
                 rb.velocity = Vector2.zero;
 
             }
@@ -66,4 +66,5 @@ public class Demonio1 : MonoBehaviour
         }
     }
 }
+
 
