@@ -12,6 +12,10 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private bool enSuelo = true;
     private bool tocandoObjetoEmpujable = false;
     private bool mundoCambiado = true;
+    public Lanzar_Piedra piedraRef;
+
+
+
 
     private void Start()
     {
@@ -25,7 +29,10 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (collision.gameObject.CompareTag("Piedra"))
+        {
+            piedraRef.contP++;
+        }
        if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
             {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
