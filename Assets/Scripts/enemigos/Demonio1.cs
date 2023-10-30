@@ -7,7 +7,7 @@ public class Demonio1 : MonoBehaviour
     private Rigidbody2D rb;
     public float velocidadHorizontal = 3f;
     public Transform player;
-    public bool movimientoDetenido = false;
+    private bool movimientoDetenido = true;
 
     public float distanciaCampoVision = 5f;
 
@@ -31,16 +31,16 @@ public class Demonio1 : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
             if (!movimientoDetenido)
-            {
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             gameObject.tag = "Enemigo";
-            RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"), LayerMask.GetMask("Piedra"));
-            RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"), LayerMask.GetMask("Piedra"));
+            RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
+            RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
 
             if (hitDerecha.collider != null || hitIzquierda.collider != null)
             {
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
-
             }
             else
             {
@@ -66,4 +66,5 @@ public class Demonio1 : MonoBehaviour
         }
     }
 }
+
 
