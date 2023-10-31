@@ -55,6 +55,7 @@ private Rigidbody2D rb;
         {
             if (!tocoTecho)
             {
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
             }
             else
