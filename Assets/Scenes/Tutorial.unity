@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 45366726}
   m_Layer: 0
   m_Name: Demonio1
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1063,8 +1063,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526511437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3766, y: -5.2031, z: 0}
-  m_LocalScale: {x: 2.4720867, y: 2.4076028, z: 1}
+  m_LocalPosition: {x: -6.85, y: -5.211, z: 0}
+  m_LocalScale: {x: 2.4720867, y: 2.3803968, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1494815149}
@@ -1105,7 +1105,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0026989803, y: 0.0018229485}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1116,7 +1116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.28897148, y: 0.82655644}
   m_EdgeRadius: 0
 --- !u!1 &617989438
 GameObject:
@@ -1916,7 +1916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494815148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.13, y: 0.33, z: 0}
+  m_LocalPosition: {x: 0.71, y: 0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
