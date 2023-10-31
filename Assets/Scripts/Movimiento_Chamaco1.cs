@@ -11,36 +11,30 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private Rigidbody2D rb;
     private bool enSuelo = true;
     private bool tocandoObjetoEmpujable = false;
-    private Demonio1 demon;
-
+    private bool mundoCambiado = true;
 
     private void Start()
     {
-        demon = FindObjectOfType<Demonio1>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-
-        Debug.Log(demon.movimientoDetenido);
-        Debug.Log(tocandoObjetoEmpujable);
-        movement();
+        Movement();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
+       if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
+            {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = false;
+            Collider2D collider = GetComponent<Collider2D>();
+                collider.enabled = false;
 
-        if (collision.gameObject.CompareTag("Enemigo") && !demon.movimientoDetenido)
-        {
-
-            Destroy(gameObject);
-
-        }
-        {
-
-        }
+            }
+        
         if (collision.gameObject.CompareTag("Suelo"))
         {
             enSuelo = true;
@@ -57,11 +51,11 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
     }
 
-    private void movement()
+    private void Movement()
     {
-
+        
         float movimientoHorizontal = Input.GetAxis("Horizontal");
-        Vector2 movimiento = new Vector2(movimientoHorizontal, 0);
+        Vector2 movimiento = new(movimientoHorizontal, 0);
 
         if (tocandoObjetoEmpujable)
         {
@@ -88,4 +82,9 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             enSuelo = false;
         }
     }
+    public void CambioDeMundo()
+    {
+        mundoCambiado = !mundoCambiado;
+    }
 }
+

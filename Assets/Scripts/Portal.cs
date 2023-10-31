@@ -9,6 +9,7 @@ public class Portal : MonoBehaviour
     private Demonio1 demonio;
     private Demonio2 araña;
     private Demonio_volador mosca;
+    private plataformaOculta[] plataforma;
     private Movimiento_Chamaco1 chamaco;
 
 
@@ -18,6 +19,7 @@ public class Portal : MonoBehaviour
         araña = FindObjectOfType<Demonio2>();
         chamaco = FindAnyObjectByType<Movimiento_Chamaco1>();
         mosca = FindAnyObjectByType<Demonio_volador>();
+        plataforma = FindObjectsOfType<plataformaOculta>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +27,9 @@ public class Portal : MonoBehaviour
         if (collision.gameObject.CompareTag(Target))
         {
             canTeleport = true;
+
         }
+
     }
 
 
@@ -43,12 +47,22 @@ public class Portal : MonoBehaviour
             }
             if (chamaco != null)
             {
-                chamaco.cambioDeMundo();
+                chamaco.CambioDeMundo();
             }
             if (mosca != null)
             {
                 mosca.CambioMovimiento();
             }
+            if(plataforma != null)
+            {
+                foreach (var plataformaOculta in plataforma)
+                {
+                    plataformaOculta.CambioDeMundo();
+                }
+                canTeleport = false;
+            }
+            
+        
         }
     }
 }
