@@ -9,6 +9,7 @@ TagManager:
   - chamaco
   - Enemigo
   - Techo
+  - Destruible
   layers:
   - Default
   - TransparentFX
