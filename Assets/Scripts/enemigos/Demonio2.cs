@@ -18,6 +18,7 @@ private Rigidbody2D rb;
     private Vector2 direccionRayoAbajo;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
+    private bool mirandoDerecha = true;
 
 
 
@@ -66,9 +67,9 @@ private Rigidbody2D rb;
 
         if (!movimientoDetenido)
         {
-            RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
-            RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
-            RaycastHit2D hitAbajo = Physics2D.Raycast(transform.position, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Chamaco"));
+            RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
+            RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
+            RaycastHit2D hitAbajo = Physics2D.Raycast(transform.position, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Chamaco", "Piedra"));
             if (hitAbajo.collider != null)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
@@ -77,6 +78,7 @@ private Rigidbody2D rb;
             }
             if (hitDerecha.collider != null || hitIzquierda.collider != null)
             {
+
                 rb.constraints = RigidbodyConstraints2D.None;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
@@ -107,7 +109,16 @@ private Rigidbody2D rb;
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
         }
     }
-        public void CambioMovimiento()
+    private void Girar()
+    {
+
+        mirandoDerecha = !mirandoDerecha;
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+
+    }
+    public void CambioMovimiento()
     {
         movimientoDetenido = !movimientoDetenido;
     }

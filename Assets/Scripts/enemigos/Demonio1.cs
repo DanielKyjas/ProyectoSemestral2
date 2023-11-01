@@ -7,7 +7,7 @@ public class Demonio1 : MonoBehaviour
     private Rigidbody2D rb;
     public float velocidadHorizontal = 3f;
     public Transform player;
-    private bool movimientoDetenido = true;
+    public bool movimientoDetenido = false;
 
     public float distanciaCampoVision = 5f;
 
@@ -34,8 +34,8 @@ public class Demonio1 : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             gameObject.tag = "Enemigo";
-            RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
-            RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco"));
+            RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
+            RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
 
             if (hitDerecha.collider != null || hitIzquierda.collider != null)
             {
