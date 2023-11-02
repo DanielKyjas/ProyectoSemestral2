@@ -13,12 +13,14 @@ public class Demonio1 : MonoBehaviour
 
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
-
+    private Animator animator;
+    private bool viendote = false;
 
 
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
         direccionRayoIzquierda = Vector2.left * distanciaCampoVision;
@@ -26,6 +28,8 @@ public class Demonio1 : MonoBehaviour
 
     private void Update()
     {
+        animator.SetBool("Movimientodetenido", movimientoDetenido);
+        animator.SetBool("Siguiendote", viendote);
         if (movimientoDetenido)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePosition;
@@ -39,21 +43,25 @@ public class Demonio1 : MonoBehaviour
 
             if (hitDerecha.collider != null || hitIzquierda.collider != null)
             {
+                viendote = true;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
             }
             else
             {
+                viendote = false;  
                 rb.velocity = Vector2.zero;
 
             }
+            
         }
-
+        
         Debug.DrawRay(transform.position, direccionRayoDerecha, Color.red);
         Debug.DrawRay(transform.position, direccionRayoIzquierda, Color.red);
 
 
     }
+
 
 
     public void CambioMovimiento()
