@@ -14,8 +14,11 @@ public class Demonio_volador : MonoBehaviour
     private float distanciaChamaco;
     private Vector2 chamacoPosition;
     Vector2 moveDirection;
+    private Animator animator; 
+
     private void Start()
     {
+        animator = GetComponent<Animator>();
         randomNumber = Random.Range(0, movementPoints.Length);
         spriteRenderer = GetComponent<SpriteRenderer>();
         distanciaChamaco = Mathf.Abs(chamaco.position.x - transform.position.x);
@@ -24,10 +27,12 @@ public class Demonio_volador : MonoBehaviour
         chamacoPosition = chamaco.position;
     }
     private void Update()
-    {
+    { 
+        animator.SetBool("movimientoDetenido",movimientoDetenido);
         transform.localScale = new Vector3(Mathf.Sign(chamaco.position.x - transform.position.x), 1, 1);
         distanciaChamaco = Mathf.Abs(chamaco.position.x - transform.position.x);
 
+        
         if (movimientoDetenido)
         {
             speed = 15;
