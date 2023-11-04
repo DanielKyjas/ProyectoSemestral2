@@ -608,7 +608,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.0367374
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1023,6 +1023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puerta
       objectReference: {fileID: 0}
+    - target: {fileID: 7812119713428647812, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647813, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1079,7 +1083,8 @@ PrefabInstance:
       propertyPath: chamacoMovementX
       value: -3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5025592317476369752, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
 --- !u!4 &853370866 stripped
 Transform:
@@ -3265,6 +3270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puerta (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7812119713428647812, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647813, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3321,7 +3330,8 @@ PrefabInstance:
       propertyPath: chamacoMovementX
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5025592317476369752, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
 --- !u!4 &1767528906 stripped
 Transform:
@@ -4412,9 +4422,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1589299585}
     m_Modifications:
+    - target: {fileID: 5025592317476369752, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647812, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: m_Name
       value: Puerta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812119713428647812, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
+      propertyPath: m_TagString
+      value: Checkpoints
       objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647813, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: m_RootOrder
@@ -4460,6 +4478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7812119713428647814, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647815, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: chamaco
       value: 
@@ -4468,5 +4490,6 @@ PrefabInstance:
       propertyPath: chamacoMovementX
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5025592317476369752, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}

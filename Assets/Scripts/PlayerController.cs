@@ -2,26 +2,42 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private CheckpointManager checkpointManager;
+    private Vector3 initialPosition;
+    private Vector3 currentPosition;
+
+    private Transform lastCheckpoint;
 
     void Start()
     {
-        // Encuentra el CheckpointManager en la escena
-        checkpointManager = FindObjectOfType<CheckpointManager>(); 
-        if (checkpointManager == null)
+        // Guardamos la posición inicial del jugador
+        initialPosition = transform.position;
+        currentPosition = transform.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Checkpoints"))
         {
-            Debug.LogError("No se ha encontrado el CheckpointManager en la escena.");
+            lastCheckpoint = other.transform;
         }
     }
 
-    // Esta función se llama cuando el jugador pierde
-    public void PlayerLose()
+    public void Die()
     {
-        // Guardar el último checkpoint alcanzado
-        int checkpointIndex = checkpointManager.checkpoints.IndexOf(checkpointManager.GetActiveCheckpoint());
-        checkpointManager.SaveCheckpoint(checkpointIndex);
+        if (lastCheckpoint != null)
+        {
+            currentPosition = lastCheckpoint.position;
+            transform.position = currentPosition;
+        }
+        else
+        {
+            ResetToInitialPosition();
+        }
+    }
 
-        // Aquí puede realizar otras acciones cuando el jugador pierde
-        Debug.Log("El jugador perdió. Checkpoint guardado.");
+    public void ResetToInitialPosition()
+    {
+        transform.position = initialPosition;
+        currentPosition = initialPosition;
     }
 }
