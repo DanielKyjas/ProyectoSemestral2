@@ -13,14 +13,7 @@ public class Demonio1 : MonoBehaviour
 
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
-<<<<<<< Updated upstream
 
-=======
-    private Vector2 direccionRayoDerechaAbajo;
-    private Vector2 direccionRayoIzquierdaAbajo;
-    private Animator animator;
-    private bool viendote = false;
->>>>>>> Stashed changes
 
 
 
@@ -29,7 +22,6 @@ public class Demonio1 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
         direccionRayoIzquierda = Vector2.left * distanciaCampoVision;
-        direccionRayoDerechaAbajo = Vector2.right * distanciaCampoVision;
     }
 
     private void Update()
