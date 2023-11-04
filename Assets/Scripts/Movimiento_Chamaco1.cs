@@ -12,51 +12,37 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private bool enSuelo = true;
     private bool tocandoObjetoEmpujable = false;
     private bool mundoCambiado = true;
+    public Lanzar_Piedra piedraRef;
+    private bool mirandoDerecha = true;
+    private Animator animator;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        animator.SetBool("enSuelo", enSuelo);
         Movement();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-       if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
-            {
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.enabled = false;
-            Collider2D collider = GetComponent<Collider2D>();
-                collider.enabled = false;
-
-            }
-        
-        if (collision.gameObject.CompareTag("Suelo"))
-        {
-            enSuelo = true;
-
-        }
-
-        if (collision.gameObject.CompareTag("Empujable"))
-        {
-            tocandoObjetoEmpujable = true;
-        }
-        else
-        {
-            tocandoObjetoEmpujable = false;
-        }
     }
 
     private void Movement()
     {
         
         float movimientoHorizontal = Input.GetAxis("Horizontal");
+        animator.SetFloat("Horizontal",Mathf.Abs( movimientoHorizontal));
         Vector2 movimiento = new(movimientoHorizontal, 0);
+        if (movimientoHorizontal >0 && !mirandoDerecha) {
+            Girar();
 
+        }
+        else if (movimientoHorizontal <0 && mirandoDerecha)
+        {
+            Girar();
+        }
         if (tocandoObjetoEmpujable)
         {
             rb.velocity = new Vector2(movimiento.x * velocidadEmpujando, rb.velocity.y);
@@ -82,9 +68,51 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             enSuelo = false;
         }
     }
+
+    private void Girar() {
+
+        mirandoDerecha = !mirandoDerecha;
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+    
+    }
+
     public void CambioDeMundo()
     {
         mundoCambiado = !mundoCambiado;
     }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Piedra"))
+        {
+            piedraRef.contP++;
+        }
+       if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
+            {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = false;
+            Collider2D collider = GetComponent<Collider2D>();
+                collider.enabled = false;
+
+            }
+        
+        if (collision.gameObject.CompareTag("Suelo"))
+        {
+            enSuelo = true;
+
+        }
+
+        if (collision.gameObject.CompareTag("Empujable"))
+        {
+            tocandoObjetoEmpujable = true;
+        }
+        else
+        {
+            tocandoObjetoEmpujable = false;
+        }
+    }
+
 }
 

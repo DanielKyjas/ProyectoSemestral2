@@ -9,6 +9,7 @@ TagManager:
   - chamaco
   - Enemigo
   - Techo
+  - Piedra
   - Destruible
   layers:
   - Default
@@ -19,7 +20,7 @@ TagManager:
   - UI
   - Chamaco
   - Objeto
-  - 
+  - Piedra
   - 
   - 
   - 
