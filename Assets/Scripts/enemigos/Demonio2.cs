@@ -20,8 +20,6 @@ private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool mirandoDerecha = true;
 
-
-
     private void Start()
     {
 
@@ -38,6 +36,7 @@ private Rigidbody2D rb;
     {
         Vector2 puntoInicial = new(transform.position.x, transform.position.y - 2.0f);
         RaycastHit2D hitAbajo2 = Physics2D.Raycast(puntoInicial, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
+         Vector2 puntoAbajo = transform.position - new Vector3(0, 0.5f);
         if (hitAbajo2.collider != null)
         {
             
@@ -70,13 +69,15 @@ private Rigidbody2D rb;
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
             RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
             RaycastHit2D hitAbajo = Physics2D.Raycast(transform.position, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Chamaco", "Piedra"));
+            RaycastHit2D hitDerechaAbajo = Physics2D.Raycast(puntoAbajo, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
+            RaycastHit2D hitIzquierdaAbajo = Physics2D.Raycast(puntoAbajo, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
             if (hitAbajo.collider != null)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(rb.velocity.x, -5f);
                 tocoTecho = false;
             }
-            if (hitDerecha.collider != null || hitIzquierda.collider != null)
+            if (hitDerecha.collider != null || hitIzquierda.collider != null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null)
             {
 
                 rb.constraints = RigidbodyConstraints2D.None;
@@ -84,7 +85,7 @@ private Rigidbody2D rb;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
             }
             else
-            if (hitDerecha.collider == null && tocosuelo == true || hitIzquierda.collider == null && tocosuelo == true)
+            if ((hitDerecha.collider == null || hitIzquierda.collider == null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null) && tocosuelo == true)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
@@ -94,6 +95,8 @@ private Rigidbody2D rb;
         Debug.DrawRay(transform.position, direccionRayoDerecha, Color.red);
         Debug.DrawRay(transform.position, direccionRayoIzquierda, Color.red);
         Debug.DrawRay(transform.position, direccionRayoAbajo, Color.red);
+        Debug.DrawRay(puntoAbajo, direccionRayoDerecha, Color.red);
+        Debug.DrawRay(puntoAbajo, direccionRayoIzquierda, Color.red);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
