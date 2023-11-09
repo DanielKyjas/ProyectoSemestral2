@@ -91,12 +91,9 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
        if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
             {
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            spriteRenderer.enabled = false;
-            Collider2D collider = GetComponent<Collider2D>();
-                collider.enabled = false;
+            Destroy(gameObject);
 
-            }
+        }
         
         if (collision.gameObject.CompareTag("Suelo"))
         {

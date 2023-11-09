@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoints : MonoBehaviour
+public class CheckpointManager : MonoBehaviour
 {
-    public static Checkpoints instance;
+    public static CheckpointManager instance;
     public Vector3 initialPlayerPosition;
     public Vector3 lastPlayerPosition;
+    [SerializeField]
+    private GameObject player;
+    public GameObject playerPrefab;
+    
 
     private void Awake()
     {
@@ -14,26 +18,29 @@ public class Checkpoints : MonoBehaviour
         {
             instance = this;
         }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+        GameObject player = GameObject.FindGameObjectWithTag("chamaco");
     }
 
     private void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+       // GameObject player = GameObject.FindGameObjectWithTag("chamaco");
+        /*if (player != null)
         {
             player.transform.position = initialPlayerPosition;
             lastPlayerPosition = initialPlayerPosition;
+        }*/
+    }
+    private void Update()
+    {
+        if (player == null){
+            Debug.Log("UwU");
+            GenerarObjeto();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("chamaco"))
         {
             UpdateLastPlayerPosition(other.transform.position);
         }
@@ -46,10 +53,16 @@ public class Checkpoints : MonoBehaviour
 
     public void PlayerDied()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("chamaco");
         if (player != null)
         {
             player.transform.position = instance.lastPlayerPosition;
         }
+    }
+    private void GenerarObjeto()
+    {
+        //jugador = jugador.GetComponent<GameObject>();
+        player = Instantiate(playerPrefab, new Vector3(-27.8980007f, -3.70900011f, -1.47000003f), Quaternion.identity);
+        
     }
 }
