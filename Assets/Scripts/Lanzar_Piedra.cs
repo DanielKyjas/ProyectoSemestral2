@@ -35,7 +35,6 @@ public class Lanzar_Piedra : MonoBehaviour
             inicioArrastre = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         }
-        Debug.Log(contP);
     }
 
 
