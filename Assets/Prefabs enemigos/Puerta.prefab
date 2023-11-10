@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7812119713428647813}
   - component: {fileID: 7812119713428647816}
+  - component: {fileID: 5025592317476369752}
   - component: {fileID: 7812119713428647815}
   - component: {fileID: 7812119713428647814}
   m_Layer: 0
   m_Name: Puerta
-  m_TagString: Untagged
+  m_TagString: Checkpoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +87,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5025592317476369752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812119713428647812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20355a2b51c5e1444b82a0e3481a4e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7812119713428647815
 MonoBehaviour:
   m_ObjectHideFlags: 0

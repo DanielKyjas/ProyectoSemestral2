@@ -11,6 +11,7 @@ TagManager:
   - Techo
   - Piedra
   - Destruible
+  - Checkpoints
   layers:
   - Default
   - TransparentFX
