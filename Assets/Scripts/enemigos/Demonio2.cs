@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +19,7 @@ private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     private bool mirandoDerecha = true;
+    [SerializeField] private new GameObject light;
 
     private void Start()
     {
@@ -60,11 +61,13 @@ private Rigidbody2D rb;
             else
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePosition;
+                light.SetActive(true);
             }
         }
 
         if (!movimientoDetenido)
         {
+            light.SetActive(false);
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
             RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
             RaycastHit2D hitAbajo = Physics2D.Raycast(transform.position, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Chamaco", "Piedra"));
