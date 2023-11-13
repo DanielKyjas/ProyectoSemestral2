@@ -1,4 +1,5 @@
- using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,6 +40,7 @@ private Rigidbody2D rb;
     private void Update()
     {
         animator.SetBool("movimientodetenido",movimientoDetenido);
+        animator.SetBool("siguiendote",siguiendo);
         animator.SetBool("bajando",bajando);
         Vector2 puntoInicial = new(transform.position.x, transform.position.y - 2.0f);
         RaycastHit2D hitAbajo2 = Physics2D.Raycast(puntoInicial, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
@@ -87,10 +89,14 @@ private Rigidbody2D rb;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(rb.velocity.x, -5f);
                 tocoTecho = false;
+                siguiendo = false;
+
             }
             else { bajando =  false; }
             if (hitDerecha.collider != null || hitIzquierda.collider != null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null)
             {
+                siguiendo = true;
+                Debug.Log("AAAAAAAAA");
                 rb.constraints = RigidbodyConstraints2D.None;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
@@ -98,6 +104,7 @@ private Rigidbody2D rb;
             else
             if ((hitDerecha.collider == null || hitIzquierda.collider == null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null) && tocosuelo == true)
             {
+                Debug.Log("OOOOOOOOOO");
                 siguiendo = false;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
@@ -115,7 +122,6 @@ private Rigidbody2D rb;
 
         if (collision.gameObject.CompareTag("Suelo"))
         {
-            siguiendo = true;
             tocosuelo = true;
         }
         if (collision.gameObject.CompareTag("Techo"))
