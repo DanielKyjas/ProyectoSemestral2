@@ -34,11 +34,11 @@ public class Demonio1 : MonoBehaviour
         Vector2 puntoAbajo = transform.position - new Vector3(0, 1.2f);
         if (movimientoDetenido)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         }
             if (!movimientoDetenido)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             gameObject.tag = "Enemigo";
   
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
