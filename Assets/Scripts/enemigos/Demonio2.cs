@@ -100,6 +100,14 @@ private Rigidbody2D rb;
                 rb.constraints = RigidbodyConstraints2D.None;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
+                if (direccionHaciaChamaco.x > 0 && mirandoDerecha)
+                {
+                    Girar();
+                }
+                else if (direccionHaciaChamaco.x < 0 && !mirandoDerecha)
+                {
+                    Girar();
+                }
             }
             else
             if ((hitDerecha.collider == null || hitIzquierda.collider == null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null) && tocosuelo == true)

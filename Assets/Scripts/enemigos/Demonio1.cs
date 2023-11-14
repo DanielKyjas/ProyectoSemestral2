@@ -15,7 +15,7 @@ public class Demonio1 : MonoBehaviour
     private Vector2 direccionRayoIzquierda;
     private Animator animator;
     private bool viendote = false;
-
+    private bool mirandoDerecha= true;
 
 
     private void Start()
@@ -51,6 +51,14 @@ public class Demonio1 : MonoBehaviour
                 viendote = true;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
+                if (direccionHaciaChamaco.x > 0 &&mirandoDerecha)
+                {
+                    Girar();
+                }
+                else if(direccionHaciaChamaco.x < 0 && !mirandoDerecha)
+                {
+                    Girar();
+                }
             }
             else
             {
@@ -58,7 +66,7 @@ public class Demonio1 : MonoBehaviour
                 rb.velocity = Vector2.zero;
 
             }
-            
+           
         }
         
         Debug.DrawRay(transform.position, direccionRayoDerecha, Color.red);
@@ -69,7 +77,15 @@ public class Demonio1 : MonoBehaviour
 
     }
 
+    private void Girar()
+    {
 
+        mirandoDerecha = !mirandoDerecha;
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+
+    }
 
     public void CambioMovimiento()
     {
