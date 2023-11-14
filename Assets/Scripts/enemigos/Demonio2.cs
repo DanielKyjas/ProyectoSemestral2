@@ -64,12 +64,12 @@ private Rigidbody2D rb;
             siguiendo = false;
             if (!tocoTecho)
             {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
             }
             else
             {
-                rb.constraints = RigidbodyConstraints2D.FreezePosition;
+                rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                 light.SetActive(true);
             }
         }
@@ -86,7 +86,7 @@ private Rigidbody2D rb;
             if (hitAbajo.collider != null)
             {
                 bajando = true;
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, -5f);
                 tocoTecho = false;
                 siguiendo = false;
@@ -106,7 +106,7 @@ private Rigidbody2D rb;
             {
                 Debug.Log("OOOOOOOOOO");
                 siguiendo = false;
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
             }
         }
@@ -128,7 +128,7 @@ private Rigidbody2D rb;
         {
             tocosuelo = false;
             tocoTecho = true;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
     }
     private void Girar()
