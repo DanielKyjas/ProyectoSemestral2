@@ -15,7 +15,7 @@ public class Demonio1 : MonoBehaviour
     private Vector2 direccionRayoIzquierda;
     private Animator animator;
     private bool viendote = false;
-
+    private bool mirandoDerecha= true;
 
 
     private void Start()
@@ -34,11 +34,11 @@ public class Demonio1 : MonoBehaviour
         Vector2 puntoAbajo = transform.position - new Vector3(0, 1.2f);
         if (movimientoDetenido)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         }
             if (!movimientoDetenido)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             gameObject.tag = "Enemigo";
   
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
@@ -51,6 +51,14 @@ public class Demonio1 : MonoBehaviour
                 viendote = true;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
+                if (direccionHaciaChamaco.x > 0 &&mirandoDerecha)
+                {
+                    Girar();
+                }
+                else if(direccionHaciaChamaco.x < 0 && !mirandoDerecha)
+                {
+                    Girar();
+                }
             }
             else
             {
@@ -58,7 +66,7 @@ public class Demonio1 : MonoBehaviour
                 rb.velocity = Vector2.zero;
 
             }
-            
+           
         }
         
         Debug.DrawRay(transform.position, direccionRayoDerecha, Color.red);
@@ -69,7 +77,15 @@ public class Demonio1 : MonoBehaviour
 
     }
 
+    private void Girar()
+    {
 
+        mirandoDerecha = !mirandoDerecha;
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+
+    }
 
     public void CambioMovimiento()
     {

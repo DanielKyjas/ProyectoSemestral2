@@ -1,4 +1,5 @@
- using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,11 +20,14 @@ private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
     private bool mirandoDerecha = true;
+    private bool bajando = false;
+    private bool siguiendo = false;
+    private Animator animator;
     [SerializeField] private new GameObject light;
 
     private void Start()
     {
-
+        animator = GetComponent<Animator>();   
         rb = GetComponent<Rigidbody2D>();
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
         direccionRayoIzquierda = Vector2.left * distanciaCampoVision;
@@ -35,13 +39,15 @@ private Rigidbody2D rb;
 
     private void Update()
     {
+        animator.SetBool("movimientodetenido",movimientoDetenido);
+        animator.SetBool("siguiendote",siguiendo);
+        animator.SetBool("bajando",bajando);
         Vector2 puntoInicial = new(transform.position.x, transform.position.y - 2.0f);
         RaycastHit2D hitAbajo2 = Physics2D.Raycast(puntoInicial, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
-         Vector2 puntoAbajo = transform.position - new Vector3(0, 0.5f);
+        Vector2 puntoAbajo = transform.position - new Vector3(0, 0.5f);
         if (hitAbajo2.collider != null)
         {
-            
-             boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
+            boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
             if (boxCollider != null)
             {
                 boxCollider.isTrigger = false;
@@ -54,20 +60,23 @@ private Rigidbody2D rb;
         }
         if (movimientoDetenido)
         {
+            bajando = false;
+            siguiendo = false;
             if (!tocoTecho)
             {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
             }
             else
             {
-                rb.constraints = RigidbodyConstraints2D.FreezePosition;
+                rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                 light.SetActive(true);
             }
         }
 
         if (!movimientoDetenido)
         {
+
             light.SetActive(false);
             RaycastHit2D hitDerecha = Physics2D.Raycast(transform.position, direccionRayoDerecha, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
             RaycastHit2D hitIzquierda = Physics2D.Raycast(transform.position, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
@@ -76,21 +85,36 @@ private Rigidbody2D rb;
             RaycastHit2D hitIzquierdaAbajo = Physics2D.Raycast(puntoAbajo, direccionRayoIzquierda, distanciaCampoVision, LayerMask.GetMask("Chamaco", "Piedra"));
             if (hitAbajo.collider != null)
             {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+                bajando = true;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, -5f);
                 tocoTecho = false;
+                siguiendo = false;
+
             }
+            else { bajando =  false; }
             if (hitDerecha.collider != null || hitIzquierda.collider != null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null)
             {
-
+                siguiendo = true;
+                Debug.Log("AAAAAAAAA");
                 rb.constraints = RigidbodyConstraints2D.None;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
+                if (direccionHaciaChamaco.x > 0 && mirandoDerecha)
+                {
+                    Girar();
+                }
+                else if (direccionHaciaChamaco.x < 0 && !mirandoDerecha)
+                {
+                    Girar();
+                }
             }
             else
             if ((hitDerecha.collider == null || hitIzquierda.collider == null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null) && tocosuelo == true)
             {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+                Debug.Log("OOOOOOOOOO");
+                siguiendo = false;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
             }
         }
@@ -112,7 +136,7 @@ private Rigidbody2D rb;
         {
             tocosuelo = false;
             tocoTecho = true;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
     }
     private void Girar()
