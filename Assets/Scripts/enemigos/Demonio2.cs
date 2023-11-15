@@ -96,7 +96,6 @@ private Rigidbody2D rb;
             if (hitDerecha.collider != null || hitIzquierda.collider != null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null)
             {
                 siguiendo = true;
-                Debug.Log("AAAAAAAAA");
                 rb.constraints = RigidbodyConstraints2D.None;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
@@ -112,7 +111,6 @@ private Rigidbody2D rb;
             else
             if ((hitDerecha.collider == null || hitIzquierda.collider == null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null) && tocosuelo == true)
             {
-                Debug.Log("OOOOOOOOOO");
                 siguiendo = false;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);

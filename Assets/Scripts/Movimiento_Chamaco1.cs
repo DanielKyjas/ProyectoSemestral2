@@ -85,30 +85,33 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Piedra"))
-        {
+       if (collision.gameObject.CompareTag("Piedra"))
+       {
             piedraRef.contP++;
-        }
+       }
        if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
-            {
+       { 
             Destroy(gameObject);
 
-        }
+       }
+       if (collision.gameObject.CompareTag("Pinchos") ){
+            Destroy(gameObject); 
+       }
         
-        if (collision.gameObject.CompareTag("Suelo"))
-        {
-            enSuelo = true;
+       if (collision.gameObject.CompareTag("Suelo")) 
+       {
+           enSuelo = true;
 
-        }
+       }
 
-        if (collision.gameObject.CompareTag("Empujable"))
-        {
-            tocandoObjetoEmpujable = true;
-        }
-        else
-        {
-            tocandoObjetoEmpujable = false;
-        }
+       if (collision.gameObject.CompareTag("Empujable"))
+       {
+           tocandoObjetoEmpujable = true;
+       }
+       else
+       {
+           tocandoObjetoEmpujable = false;
+       }
     }
 
 }
