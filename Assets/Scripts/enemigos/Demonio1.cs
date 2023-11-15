@@ -31,7 +31,7 @@ public class Demonio1 : MonoBehaviour
     {
         animator.SetBool("Movimientodetenido", movimientoDetenido);
         animator.SetBool("Siguiendote", viendote);
-        Vector2 puntoAbajo = transform.position - new Vector3(0, 1.2f);
+        Vector2 puntoAbajo = transform.position - new Vector3(0, .85f);
         if (movimientoDetenido)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;

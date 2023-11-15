@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
-public class Dialogue1 : MonoBehaviour
+public class PuertaPrincipal : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueMark;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(2,6)] private string[] dialogueLines;
+    [SerializeField] private GameManager gameManager;
     private bool playerInteraction;
     private bool didDialogueStart;
     private int lineIndex;
@@ -18,15 +20,25 @@ public class Dialogue1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInteraction && Input.GetKeyDown(KeyCode.E))
-        {
-            if (!didDialogueStart)
+        if (gameManager.KeysObtained != 3) {
+            if (playerInteraction && Input.GetKeyDown(KeyCode.E))
             {
-                StartDialogue();
+                if (!didDialogueStart)
+                {
+                    StartDialogue();
+                }
+                else if (dialogueText.text == dialogueLines[lineIndex])
+                {
+                    NextDialogueLine();
+                }
             }
-            else if(dialogueText.text == dialogueLines[lineIndex])
+        }
+        else
+        {
+            if (playerInteraction && Input.GetKeyDown(KeyCode.E))
             {
-                NextDialogueLine();
+                SceneManager.LoadScene("Start Menu");
+                PlayerPrefs.DeleteAll();
             }
         }
     }

@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Keys : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private string keyId;
+    private int keys = 1;
+    [SerializeField] private GameManager gameManager;
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("chamaco"))
+        {
+            if (!IsKeyCollected())
+            {
+                gameManager.KeysTotal(keys);
+                MarkKeyCollected();
+                Destroy(gameObject);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private bool IsKeyCollected()
     {
-        
+        return PlayerPrefs.HasKey("KeyCollected_" + keyId);
+    }
+
+    private void MarkKeyCollected()
+    {
+        PlayerPrefs.SetInt("KeyCollected_" + keyId, 1);
+        PlayerPrefs.Save();
     }
 }
