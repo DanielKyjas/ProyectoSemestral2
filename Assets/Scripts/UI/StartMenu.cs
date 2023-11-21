@@ -10,6 +10,8 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject pause;
     [SerializeField] private GameObject startMenu;
     [SerializeField] private Slider sliderProgress;
+    private CambioCuarto loader;
+    
     private bool startload = false;
 
     private void Awake()
@@ -30,6 +32,7 @@ public class StartMenu : MonoBehaviour
         if (startload)
         {
             StartCoroutine(Load());
+
             startload = false;
            
         }
@@ -39,12 +42,17 @@ public class StartMenu : MonoBehaviour
     {
        
         startload = true;
+       
     }
 
     public void Quit()
     {
         Debug.Log("Salir");
         Application.Quit();
+    }
+    private void Loader()
+    {
+        loader.LoadPosition();
     }
 
     IEnumerator Load()
@@ -57,12 +65,15 @@ public class StartMenu : MonoBehaviour
             float progress = Mathf.Clamp01(load.progress / 0.9f);
             sliderProgress.value = progress;
             yield return null;
+
         }
-        if(load.isDone == true)
+        if(load.isDone)
         {
             pause.SetActive(true);
             startMenu.SetActive(false);
             sliderProgress.gameObject.SetActive(false);
+            Loader();
         }
+
     }
 }
