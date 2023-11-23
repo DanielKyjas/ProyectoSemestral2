@@ -12,8 +12,6 @@ public class PuertaPrincipal : MonoBehaviour
     [SerializeField, TextArea(2,6)] private string[] dialogueLines;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Movimiento_Chamaco1 chamaco;
-    [SerializeField] private GameObject pausebotton;
-    [SerializeField] private GameObject startMenu;
     private bool playerInteraction;
     private bool didDialogueStart;
     private int lineIndex;
@@ -40,8 +38,7 @@ public class PuertaPrincipal : MonoBehaviour
         {
             if (playerInteraction && Input.GetKeyDown(KeyCode.E))
             {
-                pausebotton.SetActive(false);
-                startMenu.SetActive(true);
+                SceneManager.LoadScene("Start Menu");
                 PlayerPrefs.DeleteAll();
                 
             }

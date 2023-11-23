@@ -36,7 +36,7 @@ public class StartMenu : MonoBehaviour
             startload = false;  
         }
         string nombreEscenaActual = SceneManager.GetActiveScene().name;
-        if (nombreEscenaActual == "StartMenu")
+        if (nombreEscenaActual == "Start Menu")
         {
             startMenu.SetActive(true);
             pause.SetActive(false);

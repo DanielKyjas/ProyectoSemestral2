@@ -28,7 +28,7 @@ public class CheckpointManager : MonoBehaviour
     public GameObject playerPrefab;
     private Camera camara;
 
-
+     
     private void Awake()
     {
         if (instance == null)
