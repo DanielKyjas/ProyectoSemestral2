@@ -9,12 +9,23 @@ public class CambioCuarto : MonoBehaviour
     [SerializeField] private float chamacoMovementX = -30f;
     [SerializeField] private float chamacoMovementY = -4.18f;
     [SerializeField] private GameObject chamaco;
+    [SerializeField] private bool isInteractuable;
+    private bool isInteractuable2;
+    [SerializeField] private GameObject interactionMark;
     private bool save;
     //[SerializeField] private Transform camara;
     private Camera camara;
     private void Start()
     {
         camara = Camera.main;
+    }
+    private void Update()
+    {
+        if (isInteractuable2 && Input.GetKeyDown(KeyCode.E))
+        {
+           
+            MoveCamaraChamaco();
+        }
     }
     private void SavePosition()
     {
@@ -37,8 +48,29 @@ public class CambioCuarto : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("chamaco"))
+        if (isInteractuable)
         {
+            isInteractuable2 = true;
+            interactionMark.SetActive(true);
+        }
+
+            if (collision.gameObject.CompareTag("chamaco") && !isInteractuable) {
+            MoveCamaraChamaco();
+            
+            }
+        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (isInteractuable)
+        {
+            interactionMark.SetActive(false);
+            isInteractuable2 = false;
+        }
+    }
+    private void MoveCamaraChamaco()
+    {
+        interactionMark.SetActive(true);
             Vector3 posicionCamara = camara.transform.position;
             posicionCamara.x = camaraMovementX;
             posicionCamara.y = camaraMovementY;
@@ -50,6 +82,5 @@ public class CambioCuarto : MonoBehaviour
             posicionChamaco.y += chamacoMovementY;
             chamaco.transform.position = posicionChamaco;
             SavePosition();
-        }
     }
 }
