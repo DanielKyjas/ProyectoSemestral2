@@ -11,6 +11,7 @@ public class Portal : MonoBehaviour
     private Demonio_volador mosca;
     private plataformaOculta[] plataforma;
     private Movimiento_Chamaco1 chamaco;
+    [SerializeField] private GameObject interactionMark;
 
 
     private void Start()
@@ -27,7 +28,14 @@ public class Portal : MonoBehaviour
         if (collision.gameObject.CompareTag(Target))
         {
             canTeleport = true;
+        }
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(Target))
+        {
+            canTeleport = false;
         }
 
     }
@@ -35,8 +43,17 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
+        if (canTeleport)
+        {
+            interactionMark.SetActive(true);
+        }
+        else
+        {
+            interactionMark.SetActive(false);
+        }
         if (canTeleport && Input.GetKeyDown(KeyCode.E))
         {
+            
             if (araña != null)
             {
                 araña.CambioMovimiento();
@@ -61,8 +78,9 @@ public class Portal : MonoBehaviour
                 }
                 canTeleport = false;
             }
-            
-        
+
+
         }
+       
     }
 }

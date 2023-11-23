@@ -116,6 +116,8 @@ MonoBehaviour:
   chamacoMovementX: 0
   chamacoMovementY: 0
   chamaco: {fileID: 1001492788938900458, guid: db1015b8003ba744eadd52faf9a29164, type: 3}
+  isInteractuable: 0
+  interactionMark: {fileID: 4149474384306767463, guid: bf8d5faf6e4401c47a1d274066c16eba, type: 3}
 --- !u!61 &7812119713428647814
 BoxCollider2D:
   m_ObjectHideFlags: 0
