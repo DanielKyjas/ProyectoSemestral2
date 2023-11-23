@@ -15,6 +15,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     public Lanzar_Piedra piedraRef;
     private bool mirandoDerecha = true;
     private Animator animator;
+    private bool lanzando = false;
 
 
     private void Start()
@@ -25,6 +26,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 
     private void Update()
     {
+        animator.SetBool("Lanzando", piedraRef.lanzando);
         animator.SetBool("enSuelo", enSuelo);
         Movement();
     }
