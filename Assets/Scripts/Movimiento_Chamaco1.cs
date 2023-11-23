@@ -15,7 +15,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     public Lanzar_Piedra piedraRef;
     private bool mirandoDerecha = true;
     private Animator animator;
-    [SerializeField] private Respawn respawneo;
+    private bool lanzando = false;
 
 
     private void Start()
@@ -26,6 +26,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 
     private void Update()
     {
+        animator.SetBool("Lanzando", piedraRef.lanzando);
         animator.SetBool("enSuelo", enSuelo);
         Movement();
     }
@@ -91,13 +92,13 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             piedraRef.contP++;
        }
        if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
-       {
-            respawneo.Respawnear();
+       { 
+            Destroy(gameObject);
 
        }
        if (collision.gameObject.CompareTag("Pinchos") ){
-            respawneo.Respawnear();
-        }
+            Destroy(gameObject); 
+       }
         
        if (collision.gameObject.CompareTag("Suelo")) 
        {

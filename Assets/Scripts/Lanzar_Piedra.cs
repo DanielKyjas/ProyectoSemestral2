@@ -15,7 +15,7 @@ public class Lanzar_Piedra : MonoBehaviour
     private GameObject piedraActual;
     private PiedraScript piedra;
     public int contP;
-
+    public bool lanzando = false;
 
     void Start()
     {
@@ -31,6 +31,7 @@ public class Lanzar_Piedra : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0) && contP>0)
         { 
+            lanzando = true;
             GenerarObjeto();
             inicioArrastre = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -50,7 +51,7 @@ public class Lanzar_Piedra : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.AddForce(direccionLanzamiento * potenciaLanzamiento, ForceMode2D.Impulse);
             contP--;
-
+            lanzando = false;
         }
 
     }

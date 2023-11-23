@@ -10,6 +10,7 @@ public class Configuracion : MonoBehaviour
     [SerializeField] Slider bright;
     private float sliderValue;
     [SerializeField] Image panel;
+ 
     private void Start()
     {
         bright.value = PlayerPrefs.GetFloat("brillo", 0.5f);
@@ -39,6 +40,7 @@ public class Configuracion : MonoBehaviour
     }
     public void Mute()
     {
+       
         isMuted = !isMuted;
 
         if (isMuted)
