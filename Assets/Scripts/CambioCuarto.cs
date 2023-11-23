@@ -23,29 +23,10 @@ public class CambioCuarto : MonoBehaviour
     {
         if (isInteractuable2 && Input.GetKeyDown(KeyCode.E))
         {
-           
             MoveCamaraChamaco();
         }
     }
-    private void SavePosition()
-    {
-        PlayerPrefs.SetFloat("PosicionXCamara", camara.transform.position.x);
-        PlayerPrefs.SetFloat("PosicionYCamara", camara.transform.position.y);
-        PlayerPrefs.SetFloat("PosicionXChamaco", chamaco.transform.position.x);
-        PlayerPrefs.SetFloat("PosicionYChamaco", chamaco.transform.position.y);
-        save = true;
-    }
-   public void LoadPosition()
-    {
-        if (save)
-        {
-            camaraMovementX = PlayerPrefs.GetFloat("PosicionXCamara");
-            camaraMovementY = PlayerPrefs.GetFloat("PosicionYCamara");
-            chamacoMovementX = PlayerPrefs.GetFloat("PosicionXChamaco");
-            chamacoMovementY = PlayerPrefs.GetFloat("PosicionYChamaco");
-        }
 
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isInteractuable)
@@ -54,11 +35,11 @@ public class CambioCuarto : MonoBehaviour
             interactionMark.SetActive(true);
         }
 
-            if (collision.gameObject.CompareTag("chamaco") && !isInteractuable) {
+        if (collision.gameObject.CompareTag("chamaco") && !isInteractuable)
+        {
             MoveCamaraChamaco();
-            
-            }
-        
+
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -81,6 +62,5 @@ public class CambioCuarto : MonoBehaviour
             posicionChamaco.x += chamacoMovementX;
             posicionChamaco.y += chamacoMovementY;
             chamaco.transform.position = posicionChamaco;
-            SavePosition();
     }
 }
