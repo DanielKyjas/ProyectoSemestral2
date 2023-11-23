@@ -50,10 +50,7 @@ public class StartMenu : MonoBehaviour
         Debug.Log("Salir");
         Application.Quit();
     }
-    private void Loader()
-    {
-        loader.LoadPosition();
-    }
+
 
     IEnumerator Load()
     {
@@ -72,7 +69,6 @@ public class StartMenu : MonoBehaviour
             pause.SetActive(true);
             startMenu.SetActive(false);
             sliderProgress.gameObject.SetActive(false);
-            Loader();
         }
 
     }
