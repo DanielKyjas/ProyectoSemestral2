@@ -15,7 +15,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     public Lanzar_Piedra piedraRef;
     private bool mirandoDerecha = true;
     private Animator animator;
-    private bool lanzando = false;
+    private AudioSource audioSource;
     [SerializeField] private Respawn respawneo;
 
 
@@ -23,6 +23,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -38,6 +39,19 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         animator.SetFloat("Horizontal",Mathf.Abs( movimientoHorizontal));
         Vector2 movimiento = new(movimientoHorizontal, 0);
+        if (movimientoHorizontal != 0 && enSuelo)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+
+        }
+        if (movimientoHorizontal == 0 || !enSuelo)
+        {
+            audioSource.Stop();
+
+        }
         if (movimientoHorizontal >0 && !mirandoDerecha) {
             Girar();
 
@@ -52,6 +66,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
         else
         {
+            
             rb.velocity = new Vector2(movimiento.x * velocidadMovimiento, rb.velocity.y);
 
 
