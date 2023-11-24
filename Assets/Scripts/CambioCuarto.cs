@@ -12,11 +12,13 @@ public class CambioCuarto : MonoBehaviour
     [SerializeField] private bool isInteractuable;
     private bool isInteractuable2;
     [SerializeField] private GameObject interactionMark;
+    private AudioSource audioSource;
     private bool save;
     //[SerializeField] private Transform camara;
     private Camera camara;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();  
         camara = Camera.main;
     }
     private void Update()
@@ -38,7 +40,7 @@ public class CambioCuarto : MonoBehaviour
         if (collision.gameObject.CompareTag("chamaco") && !isInteractuable)
         {
             MoveCamaraChamaco();
-
+            audioSource.Play();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

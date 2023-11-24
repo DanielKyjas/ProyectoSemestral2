@@ -17,7 +17,8 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
     [SerializeField] private Respawn respawneo;
-
+    [SerializeField] private AudioClip audio1;
+    [SerializeField] private AudioClip audio2;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
+                audioSource.clip = audio1;
                 audioSource.Play();
             }
 
