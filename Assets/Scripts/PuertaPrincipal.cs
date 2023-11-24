@@ -11,6 +11,7 @@ public class PuertaPrincipal : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(2,6)] private string[] dialogueLines;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private Movimiento_Chamaco1 chamaco;
     private bool playerInteraction;
     private bool didDialogueStart;
     private int lineIndex;
@@ -39,6 +40,7 @@ public class PuertaPrincipal : MonoBehaviour
             {
                 SceneManager.LoadScene("Start Menu");
                 PlayerPrefs.DeleteAll();
+                
             }
         }
     }
@@ -49,6 +51,7 @@ public class PuertaPrincipal : MonoBehaviour
         dialogueMark.SetActive(false);
         lineIndex = 0;
         StartCoroutine(ShowLine());
+        chamaco.velocidadMovimiento = 0;
 
     }
     private void NextDialogueLine()
@@ -63,6 +66,7 @@ public class PuertaPrincipal : MonoBehaviour
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
             dialogueMark.SetActive(true);
+            chamaco.velocidadMovimiento = 2.2f;
         }
     }
 

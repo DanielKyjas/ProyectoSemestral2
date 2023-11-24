@@ -5,30 +5,34 @@ using UnityEngine;
 public class Keys : MonoBehaviour
 {
     [SerializeField] private string keyId;
-    private int keys = 1;
     [SerializeField] private GameManager gameManager;
+    private bool isKeyCollected = false;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        if (collision.CompareTag("chamaco"))
+ 
+        isKeyCollected = (PlayerPrefs.GetInt(GetKeyCollectedKey(), 0) != 0);
+        if (isKeyCollected)
         {
-            if (!IsKeyCollected())
-            {
-                gameManager.KeysTotal(keys);
-                MarkKeyCollected();
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 
-    private bool IsKeyCollected()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        return PlayerPrefs.HasKey("KeyCollected_" + keyId);
+        if (collision.CompareTag("chamaco"))
+        {
+            isKeyCollected = true;
+            PlayerPrefs.SetInt(GetKeyCollectedKey(), 1);
+            PlayerPrefs.Save();
+            Destroy(gameObject);
+            gameManager.KeysTotal(1);
+        }
     }
 
-    private void MarkKeyCollected()
+    private string GetKeyCollectedKey()
     {
-        PlayerPrefs.SetInt("KeyCollected_" + keyId, 1);
-        PlayerPrefs.Save();
+        
+        return "KeyCollected_" + keyId;
     }
 }

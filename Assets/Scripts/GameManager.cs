@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int KeysObtained {  get { return keysObtained; } }
+    public int KeysObtained { get { return keysObtained; } }
     private int keysObtained;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        keysObtained = PlayerPrefs.GetInt("KeysObtained");
     }
+
     public void KeysTotal(int keysadd)
     {
-        keysObtained = keysObtained + keysadd;
-        Debug.Log(keysObtained);
+        keysObtained += keysadd;
+        Debug.Log("Total de llaves obtenidas: " + keysObtained);
         PlayerPrefs.SetInt("KeysObtained", keysObtained);
         PlayerPrefs.Save();
-        
-
     }
 }

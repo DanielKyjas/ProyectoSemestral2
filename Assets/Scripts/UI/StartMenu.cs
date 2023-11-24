@@ -33,8 +33,13 @@ public class StartMenu : MonoBehaviour
         {
             StartCoroutine(Load());
 
-            startload = false;
-           
+            startload = false;  
+        }
+        string nombreEscenaActual = SceneManager.GetActiveScene().name;
+        if (nombreEscenaActual == "Start Menu")
+        {
+            startMenu.SetActive(true);
+            pause.SetActive(false);
         }
     }
 

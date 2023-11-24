@@ -9,6 +9,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(2,6)] private string[] dialogueLines;
+    [SerializeField] private Movimiento_Chamaco1 chamaco;
     private bool playerInteraction;
     private bool didDialogueStart;
     private int lineIndex;
@@ -37,6 +38,7 @@ public class Dialogue : MonoBehaviour
         dialogueMark.SetActive(false);
         lineIndex = 0;
         StartCoroutine(ShowLine());
+        chamaco.velocidadMovimiento = 0;
 
     }
     private void NextDialogueLine()
@@ -51,6 +53,7 @@ public class Dialogue : MonoBehaviour
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
             dialogueMark.SetActive(true);
+            chamaco.velocidadMovimiento = 2.2f;
         }
     }
 
