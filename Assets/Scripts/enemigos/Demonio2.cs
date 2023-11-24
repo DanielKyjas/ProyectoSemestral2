@@ -23,10 +23,12 @@ private Rigidbody2D rb;
     private bool bajando = false;
     private bool siguiendo = false;
     private Animator animator;
+    private AudioSource audioSource;    
     [SerializeField] private new GameObject light;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();  
         animator = GetComponent<Animator>();   
         rb = GetComponent<Rigidbody2D>();
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
@@ -95,6 +97,7 @@ private Rigidbody2D rb;
             else { bajando =  false; }
             if (hitDerecha.collider != null || hitIzquierda.collider != null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null)
             {
+                audioSource.Play();
                 siguiendo = true;
                 rb.constraints = RigidbodyConstraints2D.None;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
@@ -111,6 +114,7 @@ private Rigidbody2D rb;
             else
             if ((hitDerecha.collider == null || hitIzquierda.collider == null || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null) && tocosuelo == true)
             {
+                audioSource.Pause();
                 siguiendo = false;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = new Vector2(rb.velocity.x, 5f);
