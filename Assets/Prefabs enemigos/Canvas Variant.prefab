@@ -895,6 +895,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bright: {fileID: 1647667647}
   panel: {fileID: 1207358509}
+  mute: {fileID: 0}
+  notMute: {fileID: 0}
+  mute2: {fileID: 0}
+  notMute2: {fileID: 0}
 --- !u!1 &713552678
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +911,6 @@ GameObject:
   - component: {fileID: 713552682}
   - component: {fileID: 713552681}
   - component: {fileID: 713552680}
-  - component: {fileID: 713552683}
   m_Layer: 5
   m_Name: Mute
   m_TagString: Untagged
@@ -1029,27 +1032,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!95 &713552683
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713552678}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9126a7394b8a1e640979383144e26525, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &769276489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,6 +2514,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bright: {fileID: 1553254210}
   panel: {fileID: 1207358509}
+  mute: {fileID: 0}
+  notMute: {fileID: 0}
+  mute2: {fileID: 0}
+  notMute2: {fileID: 0}
 --- !u!1 &1207358508
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,7 +4283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 794839099175476089, guid: 9490f553d5e44984bbb0868804a8e749, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: Canvas Variant
       objectReference: {fileID: 0}
     - target: {fileID: 794839099175476089, guid: 9490f553d5e44984bbb0868804a8e749, type: 3}
       propertyPath: m_IsActive

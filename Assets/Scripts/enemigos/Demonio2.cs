@@ -36,11 +36,12 @@ private Rigidbody2D rb;
         direccionRayoAbajo = Vector2.down * distanciaCampoVision2;
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        rb.constraints =  RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void Update()
     {
+       
         animator.SetBool("movimientodetenido",movimientoDetenido);
         animator.SetBool("siguiendote",siguiendo);
         animator.SetBool("bajando",bajando);
@@ -99,7 +100,7 @@ private Rigidbody2D rb;
             {
                 audioSource.Play();
                 siguiendo = true;
-                rb.constraints = RigidbodyConstraints2D.None;
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);
                 if (direccionHaciaChamaco.x > 0 && mirandoDerecha)
