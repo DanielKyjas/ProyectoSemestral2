@@ -8,18 +8,20 @@ public class Demonio1 : MonoBehaviour
     public float velocidadHorizontal = 3f;
     public Transform player;
     public bool movimientoDetenido = false;
-
+    private bool viendote = false;
+    private bool mirandoDerecha= true;
     public float distanciaCampoVision = 5f;
 
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
+
     private Animator animator;
-    private bool viendote = false;
-    private bool mirandoDerecha= true;
+    private AudioSource audioSource;
 
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();  
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
@@ -34,10 +36,12 @@ public class Demonio1 : MonoBehaviour
         Vector2 puntoAbajo = transform.position - new Vector3(0, .85f);
         if (movimientoDetenido)
         {
+            audioSource.Stop();
             rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         }
             if (!movimientoDetenido)
         {
+            
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             gameObject.tag = "Enemigo";
   
@@ -48,6 +52,7 @@ public class Demonio1 : MonoBehaviour
 
             if (hitDerecha.collider != null || hitIzquierda.collider != null  || hitDerechaAbajo.collider != null || hitIzquierdaAbajo.collider != null)
             {
+                audioSource.Play();
                 viendote = true;
                 Vector2 direccionHaciaChamaco = (player.position - transform.position).normalized;
                 rb.velocity = new Vector2(direccionHaciaChamaco.x * velocidadHorizontal, rb.velocity.y);

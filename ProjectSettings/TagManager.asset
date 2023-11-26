@@ -12,6 +12,7 @@ TagManager:
   - Piedra
   - Destruible
   - Checkpoints
+  - Pinchos
   layers:
   - Default
   - TransparentFX

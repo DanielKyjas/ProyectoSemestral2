@@ -10,6 +10,12 @@ public class Configuracion : MonoBehaviour
     [SerializeField] Slider bright;
     private float sliderValue;
     [SerializeField] Image panel;
+    [SerializeField] GameObject mute;
+    [SerializeField] GameObject notMute;
+    [SerializeField] GameObject mute2;
+    [SerializeField] GameObject notMute2;
+
+
     private void Start()
     {
         bright.value = PlayerPrefs.GetFloat("brillo", 0.5f);
@@ -39,17 +45,25 @@ public class Configuracion : MonoBehaviour
     }
     public void Mute()
     {
+       
         isMuted = !isMuted;
 
         if (isMuted)
         {
             AudioListener.volume = 0;
-            Debug.Log("muteado");
+            mute.SetActive(true);
+            notMute.SetActive(false);
+            mute2.SetActive(true);
+            notMute2.SetActive(false);
         }
         else
         {
             AudioListener.volume = 1;
             Debug.Log("muteadon'ts");
+            mute.SetActive(false);
+            notMute.SetActive(true);
+            mute2.SetActive(false);
+            notMute2.SetActive(true);
         }
     }
 }

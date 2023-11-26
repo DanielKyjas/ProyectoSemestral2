@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movimiento_Chamaco1 : MonoBehaviour
 {
-    private float velocidadMovimiento = 2.2f;
+    public float velocidadMovimiento = 2.2f;
     private float fuerzaSalto = 8.5f;
     private float velocidadCorrer = 4.5f;
     private float velocidadEmpujando = 1.2f;
@@ -15,16 +15,21 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     public Lanzar_Piedra piedraRef;
     private bool mirandoDerecha = true;
     private Animator animator;
-
+    private AudioSource audioSource;
+    [SerializeField] private Respawn respawneo;
+    [SerializeField] private AudioClip audio1;
+    [SerializeField] private AudioClip audio2;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+        animator.SetBool("Lanzando", piedraRef.lanzando);
         animator.SetBool("enSuelo", enSuelo);
         Movement();
     }
@@ -35,6 +40,20 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         animator.SetFloat("Horizontal",Mathf.Abs( movimientoHorizontal));
         Vector2 movimiento = new(movimientoHorizontal, 0);
+        if (movimientoHorizontal != 0 && enSuelo)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = audio1;
+                audioSource.Play();
+            }
+
+        }
+        if (movimientoHorizontal == 0 || !enSuelo)
+        {
+            audioSource.Stop();
+
+        }
         if (movimientoHorizontal >0 && !mirandoDerecha) {
             Girar();
 
@@ -49,6 +68,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
         else
         {
+            
             rb.velocity = new Vector2(movimiento.x * velocidadMovimiento, rb.velocity.y);
 
 
@@ -90,13 +110,13 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             piedraRef.contP++;
        }
        if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
-       { 
-            Destroy(gameObject);
+       {
+            respawneo.Respawnear();
 
        }
        if (collision.gameObject.CompareTag("Pinchos") ){
-            Destroy(gameObject); 
-       }
+            respawneo.Respawnear();
+        }
         
        if (collision.gameObject.CompareTag("Suelo")) 
        {

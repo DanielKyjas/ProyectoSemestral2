@@ -9,36 +9,51 @@ public class CambioCuarto : MonoBehaviour
     [SerializeField] private float chamacoMovementX = -30f;
     [SerializeField] private float chamacoMovementY = -4.18f;
     [SerializeField] private GameObject chamaco;
+    [SerializeField] private bool isInteractuable;
+    private bool isInteractuable2;
+    [SerializeField] private GameObject interactionMark;
+    private AudioSource audioSource;
     private bool save;
     //[SerializeField] private Transform camara;
     private Camera camara;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();  
         camara = Camera.main;
     }
-    private void SavePosition()
+    private void Update()
     {
-        PlayerPrefs.SetFloat("PosicionXCamara", camara.transform.position.x);
-        PlayerPrefs.SetFloat("PosicionYCamara", camara.transform.position.y);
-        PlayerPrefs.SetFloat("PosicionXChamaco", chamaco.transform.position.x);
-        PlayerPrefs.SetFloat("PosicionYChamaco", chamaco.transform.position.y);
-        save = true;
-    }
-   public void LoadPosition()
-    {
-        if (save)
+        if (isInteractuable2 && Input.GetKeyDown(KeyCode.E))
         {
-            camaraMovementX = PlayerPrefs.GetFloat("PosicionXCamara");
-            camaraMovementY = PlayerPrefs.GetFloat("PosicionYCamara");
-            chamacoMovementX = PlayerPrefs.GetFloat("PosicionXChamaco");
-            chamacoMovementY = PlayerPrefs.GetFloat("PosicionYChamaco");
+            MoveCamaraChamaco();
         }
-
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("chamaco"))
+        if (isInteractuable)
         {
+            isInteractuable2 = true;
+            interactionMark.SetActive(true);
+        }
+
+        if (collision.gameObject.CompareTag("chamaco") && !isInteractuable)
+        {
+            MoveCamaraChamaco();
+            audioSource.Play();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (isInteractuable)
+        {
+            interactionMark.SetActive(false);
+            isInteractuable2 = false;
+        }
+    }
+    private void MoveCamaraChamaco()
+    {
+        interactionMark.SetActive(true);
             Vector3 posicionCamara = camara.transform.position;
             posicionCamara.x = camaraMovementX;
             posicionCamara.y = camaraMovementY;
@@ -49,7 +64,5 @@ public class CambioCuarto : MonoBehaviour
             posicionChamaco.x += chamacoMovementX;
             posicionChamaco.y += chamacoMovementY;
             chamaco.transform.position = posicionChamaco;
-            SavePosition();
-        }
     }
 }

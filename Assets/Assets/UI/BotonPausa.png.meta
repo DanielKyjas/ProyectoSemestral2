@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet (15)_0
+      name: BotonPausa_0
       rect:
         serializedVersion: 2
         x: 35
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88072e1a4c0d84b4cbd18ffc9f311976
-      internalID: -1858138503
+      spriteID: 0ad1221ae45c6d84b9ba9eb0a37dc7ce
+      internalID: -1977425389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet (15)_1
+      name: BotonPausa_1
       rect:
         serializedVersion: 2
         x: 919
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6d875cf214069a4f8871d1ae68c4236
-      internalID: -1410659157
+      spriteID: 68a9ab8dfbf625049aa26dc76041938c
+      internalID: -1793311614
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      spritesheet (15)_0: -1858138503
-      spritesheet (15)_1: -1410659157
+      BotonPausa_0: -1977425389
+      BotonPausa_1: -1793311614
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
