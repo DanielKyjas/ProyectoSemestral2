@@ -52,9 +52,11 @@ public class Pause : MonoBehaviour
     public void Regresar()
     {
         SceneManager.LoadScene("Start Menu");
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
         pausebotton.SetActive(false);
         startMenu.SetActive(true);
- 
+
     }
     public void Cerrar()
     {
