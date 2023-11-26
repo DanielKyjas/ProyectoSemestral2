@@ -794,7 +794,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d638a95336d2c41ba49a6d5581a826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocidadMovimiento: 2.2
   piedraRef: {fileID: 0}
+  respawneo: {fileID: 0}
+  audio1: {fileID: 0}
+  audio2: {fileID: 0}
 --- !u!212 &526511440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1393,6 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6840a3a119a62ac48986375fa00a97dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionMark: {fileID: 0}
 --- !u!212 &1021687824
 SpriteRenderer:
   m_ObjectHideFlags: 0

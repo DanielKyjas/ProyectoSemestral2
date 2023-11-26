@@ -13,11 +13,10 @@ public class Portal : MonoBehaviour
     private BackGround[] fondo;
     private Movimiento_Chamaco1 chamaco;
     [SerializeField] private GameObject interactionMark;
-    private AudioSource audioSource;
+
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         demonio = FindObjectsOfType<Demonio1>();
         araña = FindObjectsOfType<Demonio2>();
         chamaco = FindAnyObjectByType<Movimiento_Chamaco1>();
@@ -56,7 +55,7 @@ public class Portal : MonoBehaviour
         }
         if (canTeleport && Input.GetKeyDown(KeyCode.E))
         {
-            audioSource.Play();
+            
             if (araña != null)
             {
                 foreach (var Demonio2 in araña)
