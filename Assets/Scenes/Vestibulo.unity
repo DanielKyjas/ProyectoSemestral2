@@ -4900,7 +4900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 857898182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.36, y: 3.69, z: 0.23912355}
+  m_LocalPosition: {x: 31.27, y: 3.06, z: 0.23912355}
   m_LocalScale: {x: 0.2796306, y: 0.3278776, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10383,6 +10383,7 @@ GameObject:
   - component: {fileID: 1651545019}
   - component: {fileID: 1651545018}
   - component: {fileID: 1651545017}
+  - component: {fileID: 1651545020}
   m_Layer: 7
   m_Name: caja con llave
   m_TagString: Suelo
@@ -10483,6 +10484,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651545020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651545016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76746359f5ede944aa796b388ece7ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1651545018}
+  bC: {fileID: 0}
 --- !u!1 &1664498525
 GameObject:
   m_ObjectHideFlags: 0
@@ -10604,6 +10619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1672712263}
   - component: {fileID: 1672712262}
+  - component: {fileID: 1672712264}
   m_Layer: 0
   m_Name: "s\xF3tano variante (1)"
   m_TagString: Untagged
@@ -10671,13 +10687,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672712261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 79.29, y: -11.15, z: 0}
+  m_LocalPosition: {x: 62.06, y: -11.31, z: 5}
   m_LocalScale: {x: 0.4018804, y: 0.3845636, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1672712264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672712261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff5f0b1035d9a5419b5de4aecf06150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInTheOtherWorld: 1
+  cambiodemundo: 1
 --- !u!1 &1698144886 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4149474384306767463, guid: bf8d5faf6e4401c47a1d274066c16eba, type: 3}
@@ -13052,7 +13082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6107880448383120108, guid: f92c72b3b241afc4f91ae2df1f93e99a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.88
+      value: -4.71
       objectReference: {fileID: 0}
     - target: {fileID: 6107880448383120108, guid: f92c72b3b241afc4f91ae2df1f93e99a, type: 3}
       propertyPath: m_LocalPosition.z
