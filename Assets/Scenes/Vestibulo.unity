@@ -2992,7 +2992,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.9011483
+  orthographic size: 5.571109
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3016,7 +3016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.8, y: 0.21, z: -10}
+  m_LocalPosition: {x: 64.8, y: 0.05, z: -10}
   m_LocalScale: {x: 2.525, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3076,7 +3076,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.0750427
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -10046,7 +10046,7 @@ GameObject:
   - component: {fileID: 1651545017}
   m_Layer: 7
   m_Name: caja con llave
-  m_TagString: Untagged
+  m_TagString: Suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10137,7 +10137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651545016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 56.61, y: -15.77, z: -4.24}
+  m_LocalPosition: {x: 58.94, y: -15.73, z: -4.24}
   m_LocalScale: {x: 0.37790948, y: 0.37790948, z: 0.37790948}
   m_ConstrainProportionsScale: 0
   m_Children: []
