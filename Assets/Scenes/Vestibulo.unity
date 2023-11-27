@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4621393}
   m_Layer: 3
   m_Name: tabla invernadero
-  m_TagString: Suelo
+  m_TagString: Destruible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7828,7 +7828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213241701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.82, y: -6.32, z: 0.23539439}
+  m_LocalPosition: {x: -4.63, y: 1.07, z: 0.23539439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11698,35 +11698,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2944221068831744558, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.07
+      value: -3.93
       objectReference: {fileID: 0}
     - target: {fileID: 2944221068831744558, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: -6.17
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069186574994, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.31
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069186574994, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.21
+      value: -3.03
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069356283995, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.91
+      value: 6.78
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069356283995, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.18
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069464589663, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.83
+      value: 6.91
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069464589663, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.29
+      value: -8.6
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069729121294, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11748,6 +11748,10 @@ PrefabInstance:
       propertyPath: chamaco
       value: 
       objectReference: {fileID: 1788517284}
+    - target: {fileID: 2944221069890586552, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
+      propertyPath: followPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2944221069890586552, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: movementPoints.Array.size
       value: 6
