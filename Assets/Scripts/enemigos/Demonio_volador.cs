@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Demonio_volador : MonoBehaviour
 {
+
     [SerializeField] Transform chamaco;
     private float speed;
     [SerializeField] private Transform[] movementPoints;
@@ -17,8 +18,10 @@ public class Demonio_volador : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
     private Rigidbody2D rb;
+    private int followMovementPoints = 0;
     [SerializeField]private AudioClip clip1;
     [SerializeField] private AudioClip clip2;
+    [SerializeField] private bool followPath;
 
     private void Start()
     {
@@ -34,10 +37,12 @@ public class Demonio_volador : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     private void Update()
-    { 
+    {
+        
         animator.SetBool("movimientoDetenido",movimientoDetenido);
-        transform.localScale = new Vector3(Mathf.Sign(chamaco.position.x - transform.position.x), 1, 1);
-        distanciaChamaco = Mathf.Abs(chamaco.position.x - transform.position.x);
+       
+            transform.localScale = new Vector3(Mathf.Sign(chamaco.position.x - transform.position.x), 1, 1);
+        
 
         
         if (movimientoDetenido)
@@ -78,12 +83,30 @@ public class Demonio_volador : MonoBehaviour
     }
     private void MovementeBetweenPoints()
     {
+    if (!followPath)
+    {
         transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speed * Time.deltaTime);
         if (Vector2.Distance(transform.position, movementPoints[randomNumber].position) < minDistance)
         {
             randomNumber = Random.Range(0, movementPoints.Length);
         }
+            Girar();
+        }
+        if (followPath)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, movementPoints[followMovementPoints].position, speed * Time.deltaTime);
+            if (Vector2.Distance(transform.position, movementPoints[followMovementPoints].position) < minDistance)
+            {
+                followMovementPoints += 1;
+                if(followMovementPoints >= movementPoints.Length)
+                {
+                    followMovementPoints = 0;
+                }
+                Girar();
+            }
+        }
         chamacoPosition = chamaco.position;
+        distanciaChamaco = Mathf.Abs(chamaco.position.x - transform.position.x);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
