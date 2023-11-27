@@ -16,11 +16,13 @@ public class Demonio_volador : MonoBehaviour
     Vector2 moveDirection;
     private Animator animator;
     private AudioSource audioSource;
+    private Rigidbody2D rb;
     [SerializeField]private AudioClip clip1;
     [SerializeField] private AudioClip clip2;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         randomNumber = Random.Range(0, movementPoints.Length);
@@ -29,6 +31,7 @@ public class Demonio_volador : MonoBehaviour
         moveDirection = (chamaco.position - transform.position).normalized;
         speed = 7;
         chamacoPosition = chamaco.position;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     private void Update()
     { 
