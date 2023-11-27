@@ -27,7 +27,7 @@ public class Demonio_volador : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         distanciaChamaco = Mathf.Abs(chamaco.position.x - transform.position.x);
         moveDirection = (chamaco.position - transform.position).normalized;
-        speed = 15;
+        speed = 7;
         chamacoPosition = chamaco.position;
     }
     private void Update()
@@ -41,7 +41,7 @@ public class Demonio_volador : MonoBehaviour
         {
             audioSource.clip = clip1;
             audioSource.Play();
-            speed = 15;
+            speed = 7;
             MovementeBetweenPoints();
             
         }
@@ -49,10 +49,10 @@ public class Demonio_volador : MonoBehaviour
         {
             audioSource.clip = clip2;
             audioSource.Play();
-            speed = 5;
+            speed = 10;
             if (distanciaChamaco < 2.0f)
             {
-                speed = 2;
+                speed = 7;
                 transform.position = Vector2.MoveTowards(transform.position, chamacoPosition+moveDirection, speed * Time.deltaTime);
             }
             else
