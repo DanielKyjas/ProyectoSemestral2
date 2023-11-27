@@ -16,6 +16,8 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private bool mirandoDerecha = true;
     private Animator animator;
     private AudioSource audioSource;
+    private BoxCollider2D boxCollider;
+
     [SerializeField] private Respawn respawneo;
     [SerializeField] private AudioClip audio1;
     [SerializeField] private AudioClip audio2;
@@ -25,6 +27,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -36,9 +39,9 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 
     private void Movement()
     {
-        
+
         float movimientoHorizontal = Input.GetAxis("Horizontal");
-        animator.SetFloat("Horizontal",Mathf.Abs( movimientoHorizontal));
+        animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
         Vector2 movimiento = new(movimientoHorizontal, 0);
         if (movimientoHorizontal != 0 && enSuelo)
         {
@@ -54,11 +57,12 @@ public class Movimiento_Chamaco1 : MonoBehaviour
             audioSource.Stop();
 
         }
-        if (movimientoHorizontal >0 && !mirandoDerecha) {
+        if (movimientoHorizontal > 0 && !mirandoDerecha)
+        {
             Girar();
 
         }
-        else if (movimientoHorizontal <0 && mirandoDerecha)
+        else if (movimientoHorizontal < 0 && mirandoDerecha)
         {
             Girar();
         }
@@ -68,7 +72,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
         else
         {
-            
+
             rb.velocity = new Vector2(movimiento.x * velocidadMovimiento, rb.velocity.y);
 
 
@@ -89,50 +93,64 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
     }
 
-    private void Girar() {
+    private void Girar()
+    {
 
         mirandoDerecha = !mirandoDerecha;
         Vector3 escala = transform.localScale;
         escala.x *= -1;
         transform.localScale = escala;
-    
+
     }
 
     public void CambioDeMundo()
     {
         mundoCambiado = !mundoCambiado;
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       if (collision.gameObject.CompareTag("Piedra"))
-       {
+        if (collision.gameObject.CompareTag("Piedra"))
+        {
             piedraRef.contP++;
-       }
-       if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
-       {
-            respawneo.Respawnear();
+        }
+        if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
+        {
 
-       }
-       if (collision.gameObject.CompareTag("Pinchos") ){
+            StartCoroutine(RespawnDespuesDeEspera());
+
+        }
+        if (collision.gameObject.CompareTag("Pinchos"))
+        {
             respawneo.Respawnear();
         }
-        
-       if (collision.gameObject.CompareTag("Suelo")) 
-       {
-           enSuelo = true;
 
-       }
+        if (collision.gameObject.CompareTag("Suelo"))
+        {
+            enSuelo = true;
 
-       if (collision.gameObject.CompareTag("Empujable"))
-       {
-           tocandoObjetoEmpujable = true;
-       }
-       else
-       {
-           tocandoObjetoEmpujable = false;
-       }
+        }
+
+        if (collision.gameObject.CompareTag("Empujable"))
+        {
+            tocandoObjetoEmpujable = true;
+        }
+        else
+        {
+            tocandoObjetoEmpujable = false;
+        }
+    }
+    IEnumerator RespawnDespuesDeEspera()
+    {
+        boxCollider.enabled = false;
+        rb.gravityScale = 0;
+        rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        yield return new WaitForSeconds(2f);
+
+        respawneo.Respawnear();
+        boxCollider.enabled = true;
+        rb.gravityScale = 1;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
 }
-
