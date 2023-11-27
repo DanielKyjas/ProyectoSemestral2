@@ -52,10 +52,10 @@ public class Demonio_volador : MonoBehaviour
         {
             audioSource.clip = clip2;
             audioSource.Play();
-            speed = 10;
+            speed = 7;
             if (distanciaChamaco < 2.0f)
             {
-                speed = 7;
+                speed = 5;
                 transform.position = Vector2.MoveTowards(transform.position, chamacoPosition+moveDirection, speed * Time.deltaTime);
             }
             else
