@@ -11,7 +11,8 @@ public class Demonio1 : MonoBehaviour
     private bool viendote = false;
     private bool mirandoDerecha= true;
     public float distanciaCampoVision = 5f;
-
+    [SerializeField] private BoxCollider2D estatua;
+    [SerializeField] private EdgeCollider2D gato;
     private Vector2 direccionRayoDerecha;
     private Vector2 direccionRayoIzquierda;
 
@@ -24,6 +25,9 @@ public class Demonio1 : MonoBehaviour
         audioSource = GetComponent<AudioSource>();  
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        estatua = GetComponent<BoxCollider2D>();
+        gato = GetComponent<EdgeCollider2D>();
+
         direccionRayoDerecha = Vector2.right * distanciaCampoVision;
         direccionRayoIzquierda = Vector2.left * distanciaCampoVision;
 
@@ -36,12 +40,16 @@ public class Demonio1 : MonoBehaviour
         Vector2 puntoAbajo = transform.position - new Vector3(0, .85f);
         if (movimientoDetenido)
         {
+            gato.enabled = false;
+            estatua.enabled = true;
             audioSource.Stop();
             rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+            
         }
             if (!movimientoDetenido)
         {
-            
+            gato.enabled = true;
+            estatua.enabled = false;
             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
             gameObject.tag = "Enemigo";
   
