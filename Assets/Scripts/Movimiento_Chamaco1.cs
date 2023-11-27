@@ -163,7 +163,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation; 
         audioSource.Stop();
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         respawneo.Respawnear();
         golpeado = false;
         boxCollider.enabled = true;
