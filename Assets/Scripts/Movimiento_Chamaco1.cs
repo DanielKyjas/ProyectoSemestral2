@@ -20,8 +20,8 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private bool golpeado = false;
 
     [SerializeField] private Respawn respawneo;
-    [SerializeField] private AudioClip audio1;
-    [SerializeField] private AudioClip audio2;
+    [SerializeField] public AudioClip audio1;
+    [SerializeField] public AudioClip audio2;
 
     private void Start()
     {
@@ -37,6 +37,12 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         animator.SetBool("enSuelo", enSuelo);
         animator.SetBool("Golpeado", golpeado);
         Movement();
+        if (golpeado)
+        {
+
+            audioSource.PlayOneShot(audio2, 0.2f);
+   
+        }
     }
 
     private void Movement()
@@ -49,8 +55,8 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
-                audioSource.clip = audio1;
-                audioSource.Play();
+
+                audioSource.PlayOneShot(audio1, 0.704f);
             }
 
         }
@@ -147,13 +153,15 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     }
     IEnumerator RespawnDespuesDeEspera()
     {
+        audioSource.Stop();
+
         boxCollider.enabled = false;
         rb.gravityScale = 0;
-        rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
-        yield return new WaitForSeconds(2f);
+        rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation; 
+        audioSource.Stop();
+        yield return new WaitForSeconds(1.5f);
         respawneo.Respawnear();
         golpeado = false;
-
         boxCollider.enabled = true;
         rb.gravityScale = 1;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
