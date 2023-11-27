@@ -24,6 +24,7 @@ public class PuertaPrincipal : MonoBehaviour
         if (gameManager.KeysObtained != 3) {
             if (playerInteraction && Input.GetKeyDown(KeyCode.E))
             {
+                
                 if (!didDialogueStart)
                 {
                     StartDialogue();

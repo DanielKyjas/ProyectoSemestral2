@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647815, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: camaraMovementY
-      value: -11.21
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647815, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: chamacoMovementX
@@ -3816,7 +3816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647815, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: camaraMovementY
-      value: -0.05
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647815, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: chamacoMovementX
@@ -5827,7 +5827,7 @@ GameObject:
   - component: {fileID: 857898186}
   - component: {fileID: 857898185}
   - component: {fileID: 857898184}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Llave 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6202,7 +6202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647815, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: camaraMovementY
-      value: -0.05
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 7812119713428647815, guid: 0266ce24ccb01c542b1e23f4a25df550, type: 3}
       propertyPath: chamacoMovementX
@@ -7828,7 +7828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213241701}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.82, y: -6.32, z: 0.23539439}
+  m_LocalPosition: {x: 1.73, y: -0.79, z: 0.23539439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11698,43 +11698,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2944221068831744558, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.07
+      value: 8.66
       objectReference: {fileID: 0}
     - target: {fileID: 2944221068831744558, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: -3.57
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069186574994, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.31
+      value: -5.03
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069186574994, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.21
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069356283995, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.91
+      value: 6.97
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069356283995, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944221069464589663, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944221069464589663, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
       value: -8.18
       objectReference: {fileID: 0}
-    - target: {fileID: 2944221069464589663, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 2944221069464589663, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.29
-      objectReference: {fileID: 0}
     - target: {fileID: 2944221069729121294, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.11
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069729121294, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.98
+      value: 3.17
       objectReference: {fileID: 0}
     - target: {fileID: 2944221069890586552, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: clip1
@@ -11748,6 +11748,10 @@ PrefabInstance:
       propertyPath: chamaco
       value: 
       objectReference: {fileID: 1788517284}
+    - target: {fileID: 2944221069890586552, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
+      propertyPath: followPath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2944221069890586552, guid: 7983ff975f8e58a4d80961ba32908eec, type: 3}
       propertyPath: movementPoints.Array.size
       value: 6
