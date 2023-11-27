@@ -48,7 +48,11 @@ private Rigidbody2D rb;
         Vector2 puntoInicial = new(transform.position.x, transform.position.y - 2.0f);
         RaycastHit2D hitAbajo2 = Physics2D.Raycast(puntoInicial, direccionRayoAbajo, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
         Vector2 puntoAbajo = transform.position - new Vector3(0, 0.5f);
-        if (hitAbajo2.collider != null)
+        Vector2 diagonalDirection = new Vector2(2, 1).normalized;
+        RaycastHit2D hitDiagonal = Physics2D.Raycast(puntoInicial, diagonalDirection, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
+        Vector2 diagonalDirection2 = new Vector2(-2, 1).normalized;
+        RaycastHit2D hitDiagonal2 = Physics2D.Raycast(puntoInicial, diagonalDirection2, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
+        if (hitAbajo2.collider != null || hitDiagonal.collider != null || hitDiagonal2.collider != null)
         {
             boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
             if (boxCollider != null)
@@ -127,6 +131,8 @@ private Rigidbody2D rb;
         Debug.DrawRay(transform.position, direccionRayoAbajo, Color.red);
         Debug.DrawRay(puntoAbajo, direccionRayoDerecha, Color.red);
         Debug.DrawRay(puntoAbajo, direccionRayoIzquierda, Color.red);
+        Debug.DrawRay(puntoAbajo, diagonalDirection , Color.red);
+        Debug.DrawRay(puntoAbajo, diagonalDirection2 , Color.red);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
