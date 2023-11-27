@@ -13,7 +13,7 @@ public class Dialogue : MonoBehaviour
     private bool playerInteraction;
     private bool didDialogueStart;
     private int lineIndex;
-    private float typingTime = 0.03f;
+    private float typingTime = 0.02f;
 
 
     // Update is called once per frame
