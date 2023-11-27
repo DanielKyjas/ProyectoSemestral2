@@ -17,6 +17,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
     private BoxCollider2D boxCollider;
+    private bool golpeado = false;
 
     [SerializeField] private Respawn respawneo;
     [SerializeField] private AudioClip audio1;
@@ -34,12 +35,13 @@ public class Movimiento_Chamaco1 : MonoBehaviour
     {
         animator.SetBool("Lanzando", piedraRef.lanzando);
         animator.SetBool("enSuelo", enSuelo);
+        animator.SetBool("Golpeado", golpeado);
         Movement();
     }
 
     private void Movement()
     {
-
+        
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
         Vector2 movimiento = new(movimientoHorizontal, 0);
@@ -116,13 +118,16 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemigo") && !mundoCambiado)
         {
-
+            golpeado = true;
+            enSuelo = true;
             StartCoroutine(RespawnDespuesDeEspera());
 
         }
         if (collision.gameObject.CompareTag("Pinchos"))
         {
-            respawneo.Respawnear();
+            golpeado = true;
+            enSuelo = true;
+            StartCoroutine(RespawnDespuesDeEspera());
         }
 
         if (collision.gameObject.CompareTag("Suelo"))
@@ -146,11 +151,13 @@ public class Movimiento_Chamaco1 : MonoBehaviour
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         yield return new WaitForSeconds(2f);
-
         respawneo.Respawnear();
+        golpeado = false;
+
         boxCollider.enabled = true;
         rb.gravityScale = 1;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
     }
 
 }
