@@ -9134,7 +9134,7 @@ MonoBehaviour:
   - aunque no me pondria abajo porque se ve inestable
   - "Puedes arrojar piedras para distraer a tus enemigos apretando el boton izquierdo
     del mouse y soltando a la direcci\xF3n y altura que desees, ya tienes una "
-  chamaco: {fileID: 0}
+  chamaco: {fileID: 1788517282}
 --- !u!212 &1558601951
 SpriteRenderer:
   m_ObjectHideFlags: 0
