@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject pausebotton;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject startMenu;
+    private Respawn chamacoRespawn;
     private bool juegoPausado = false;
     public static Pause instance;
     private void Awake()
@@ -56,7 +57,18 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(false);
         pausebotton.SetActive(false);
         startMenu.SetActive(true);
-
+    }
+    public void Respawn()
+    {
+        
+            chamacoRespawn = FindAnyObjectByType<Respawn>();
+        if (chamacoRespawn != null)
+        {
+            chamacoRespawn.Respawnear();
+        }
+        Time.timeScale = 1f;
+        pausebotton.SetActive(true);
+        pauseMenu.SetActive(false);
     }
     public void Cerrar()
     {
