@@ -23,11 +23,19 @@ public class Dialogue : MonoBehaviour
         {
             if (!didDialogueStart)
             {
+                typingTime = 0f;
                 StartDialogue();
             }
             else if(dialogueText.text == dialogueLines[lineIndex])
             {
+                typingTime = 0f;
                 NextDialogueLine();
+             
+            }
+            else if(dialogueText.text != dialogueLines[lineIndex])
+            {
+
+                typingTime = 0.02f;
             }
         }
     }
@@ -67,6 +75,7 @@ public class Dialogue : MonoBehaviour
 
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
