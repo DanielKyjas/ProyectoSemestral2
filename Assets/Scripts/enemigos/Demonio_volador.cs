@@ -124,7 +124,14 @@ public class Demonio_volador : MonoBehaviour
 
            
     }
-        public void CambioMovimiento()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Destruible"))
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+    public void CambioMovimiento()
     {
         movimientoDetenido = !movimientoDetenido;
     }
