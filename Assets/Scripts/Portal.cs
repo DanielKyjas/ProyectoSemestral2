@@ -72,10 +72,9 @@ public class Portal : MonoBehaviour
             }
             if (chamaco != null)
             {
-                foreach (var Movimiento in plataforma)
-                {
+               
                     chamaco.CambioDeMundo();
-                }
+                
             }
             if (mosca != null)
             {
