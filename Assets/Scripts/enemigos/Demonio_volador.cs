@@ -58,7 +58,7 @@ public class Demonio_volador : MonoBehaviour
             audioSource.clip = clip2;
             audioSource.Play();
             speed = 7;
-            if (distanciaChamaco < 2.0f)
+            if (distanciaChamaco < 1.0f)
             {
                 speed = 5;
                 transform.position = Vector2.MoveTowards(transform.position, chamacoPosition+moveDirection, speed * Time.deltaTime);
@@ -70,17 +70,7 @@ public class Demonio_volador : MonoBehaviour
             
         }
         }
-    private void Girar()
-    {
-        if (transform.position.x < movementPoints[randomNumber].position.x)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
-    }
+
     private void MovementeBetweenPoints()
     {
     if (!followPath)
@@ -90,8 +80,9 @@ public class Demonio_volador : MonoBehaviour
         {
             randomNumber = Random.Range(0, movementPoints.Length);
         }
-            Girar();
-        }
+           
+            
+    }
         if (followPath)
         {
             transform.position = Vector2.MoveTowards(transform.position, movementPoints[followMovementPoints].position, speed * Time.deltaTime);
@@ -102,8 +93,9 @@ public class Demonio_volador : MonoBehaviour
                 {
                     followMovementPoints = 0;
                 }
-                Girar();
+               
             }
+            
         }
         chamacoPosition = chamaco.position;
         distanciaChamaco = Mathf.Abs(chamaco.position.x - transform.position.x);
