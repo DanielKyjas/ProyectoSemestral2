@@ -10,6 +10,7 @@ public class Portal : MonoBehaviour
     private Demonio2[] araña;
     private Demonio_volador[] mosca;
     private plataformaOculta[] plataforma;
+    private cajaOculta[] caja;
     private BackGround[] fondo;
     private Movimiento_Chamaco1 chamaco;
     [SerializeField] private GameObject interactionMark;
@@ -23,6 +24,7 @@ public class Portal : MonoBehaviour
         mosca = FindObjectsOfType<Demonio_volador>();
         plataforma = FindObjectsOfType<plataformaOculta>();
         fondo = FindObjectsOfType<BackGround>();
+        caja = FindObjectsOfType<cajaOculta>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -90,7 +92,15 @@ public class Portal : MonoBehaviour
                     BackGround.CambioDeMundo();
                 }
             }
-                if (plataforma != null)
+            if (plataforma != null)
+            {
+                foreach (var cajaOculta in caja)
+                {
+                    cajaOculta.CambioDeMundo();
+                }
+                
+            }
+            if (plataforma != null)
             {
                 foreach (var plataformaOculta in plataforma)
                 {
