@@ -52,7 +52,7 @@ private Rigidbody2D rb;
         RaycastHit2D hitDiagonal = Physics2D.Raycast(puntoInicial, diagonalDirection, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
         Vector2 diagonalDirection2 = new Vector2(-2, 1).normalized;
         RaycastHit2D hitDiagonal2 = Physics2D.Raycast(puntoInicial, diagonalDirection2, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
-        if (hitAbajo2.collider != null || hitDiagonal.collider != null || hitDiagonal2.collider != null)
+        if (hitAbajo2.collider != null )
         {
             boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
             if (boxCollider != null)
