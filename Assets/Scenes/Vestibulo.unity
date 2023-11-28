@@ -1367,6 +1367,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 576167172}
+    - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
       propertyPath: interactionMark
       value: 
       objectReference: {fileID: 843439813}
@@ -1964,11 +1968,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7216129224927286013, guid: fedc37ae1f2f8f74498aae39a514f3cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.69
+      value: 41.7
       objectReference: {fileID: 0}
     - target: {fileID: 7216129224927286013, guid: fedc37ae1f2f8f74498aae39a514f3cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.42
+      value: 25.8
       objectReference: {fileID: 0}
     - target: {fileID: 7216129224927286013, guid: fedc37ae1f2f8f74498aae39a514f3cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2023,9 +2027,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1788517285}
     - target: {fileID: 8412104251818157838, guid: fedc37ae1f2f8f74498aae39a514f3cb, type: 3}
+      propertyPath: portal
+      value: 
+      objectReference: {fileID: 1351464653}
+    - target: {fileID: 8412104251818157838, guid: fedc37ae1f2f8f74498aae39a514f3cb, type: 3}
       propertyPath: chamaco
       value: 
       objectReference: {fileID: 1788517282}
+    - target: {fileID: 8412104251818157838, guid: fedc37ae1f2f8f74498aae39a514f3cb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 576167172}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fedc37ae1f2f8f74498aae39a514f3cb, type: 3}
 --- !u!1001 &242870760
@@ -4447,6 +4459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75d6a838eb4622439ff199b6fc7fcbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalWorld: 1
 --- !u!4 &576167173
 Transform:
   m_ObjectHideFlags: 0
@@ -6722,6 +6735,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 576167172}
+    - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
       propertyPath: interactionMark
       value: 
       objectReference: {fileID: 458256855}
@@ -8052,6 +8069,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 576167172}
     - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
       propertyPath: interactionMark
       value: 
@@ -9878,6 +9899,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4149474384306767463, guid: bf8d5faf6e4401c47a1d274066c16eba, type: 3}
   m_PrefabInstance: {fileID: 975785585}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1351464653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
+  m_PrefabInstance: {fileID: 3700087882547442663}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6840a3a119a62ac48986375fa00a97dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1351613870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4149474384306767463, guid: bf8d5faf6e4401c47a1d274066c16eba, type: 3}
@@ -16031,6 +16063,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 576167172}
     - target: {fileID: 3700087883498444994, guid: 3f17f4e6ff9b3ae45b125089893f2ce0, type: 3}
       propertyPath: interactionMark
       value: 
