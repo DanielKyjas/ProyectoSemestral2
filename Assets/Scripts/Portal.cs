@@ -12,8 +12,10 @@ public class Portal : MonoBehaviour
     private plataformaOculta[] plataforma;
     private cajaOculta[] caja;
     private BackGround[] fondo;
+    private Portal[] portal;
     private Movimiento_Chamaco1 chamaco;
     [SerializeField] private GameObject interactionMark;
+    [SerializeField] private GameManager gameManager;
 
 
     private void Start()
@@ -57,7 +59,14 @@ public class Portal : MonoBehaviour
         }
         if (canTeleport && Input.GetKeyDown(KeyCode.E))
         {
-            
+            ChangeWorld();
+        }
+       
+    }
+    public void ChangeWorld()
+    {
+       
+
             if (araña != null)
             {
                 foreach (var Demonio2 in araña)
@@ -74,9 +83,9 @@ public class Portal : MonoBehaviour
             }
             if (chamaco != null)
             {
-               
-                    chamaco.CambioDeMundo();
-                
+
+                chamaco.CambioDeMundo();
+
             }
             if (mosca != null)
             {
@@ -98,19 +107,21 @@ public class Portal : MonoBehaviour
                 {
                     cajaOculta.CambioDeMundo();
                 }
-                
+
             }
-            if (plataforma != null)
+       
+        if (plataforma != null)
             {
                 foreach (var plataformaOculta in plataforma)
                 {
                     plataformaOculta.CambioDeMundo();
                 }
                 canTeleport = false;
+            gameManager.normalWorld = !gameManager.normalWorld;
             }
+           
 
-
-        }
-       
+        
     }
+
 }

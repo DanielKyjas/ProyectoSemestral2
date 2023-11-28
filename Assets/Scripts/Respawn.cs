@@ -6,8 +6,10 @@ public class Respawn : MonoBehaviour
 {
     private float checkPositionX, chackPositionY;
     private float checkCamaraPositionX, chackCamaraPositionY;
+    [SerializeField] private GameManager gameManager;
     private Camera camara;
     [SerializeField] Movimiento_Chamaco1 chamaco;
+    [SerializeField] Portal portal;
 
     void Start()
     {
@@ -25,9 +27,13 @@ public class Respawn : MonoBehaviour
         chamaco.transform.position = new Vector2(respawnX, respawnY);
         float respawnCamaraX = PlayerPrefs.GetFloat("checkCamaraPositionX");
         float respawnCamaraY = PlayerPrefs.GetFloat("checkCamaraPositionY");
-
         Vector3 posicionCamara = new Vector3(respawnCamaraX, respawnCamaraY,-10);
         camara.transform.position = posicionCamara;
+        if (gameManager.normalWorld == false)
+        {
+            portal.ChangeWorld();
+            Debug.Log("Estoy cambiando de mundo");
+        }
     }
     public void ReachedCheckPoint(float x, float y)
     {
