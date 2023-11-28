@@ -52,19 +52,35 @@ private Rigidbody2D rb;
         RaycastHit2D hitDiagonal = Physics2D.Raycast(puntoInicial, diagonalDirection, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
         Vector2 diagonalDirection2 = new Vector2(-2, 1).normalized;
         RaycastHit2D hitDiagonal2 = Physics2D.Raycast(puntoInicial, diagonalDirection2, distanciaCampoVision2, LayerMask.GetMask("Objeto"));
-        if (hitAbajo2.collider != null )
+        if (movimientoDetenido)
         {
-            boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
-            if (boxCollider != null)
+            bajando = false;
+            siguiendo = false;
+            if (!tocoTecho)
             {
-                boxCollider.isTrigger = false;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                rb.velocity = new Vector2(rb.velocity.x, 5f);
             }
-            SpriteRenderer spriteRenderer = hitAbajo2.collider.GetComponent<SpriteRenderer>();
-            if (spriteRenderer != null)
+            else
             {
-                spriteRenderer.enabled = true;
+                rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+                light.SetActive(true);
+            }
+            if (hitAbajo2.collider != null)
+            {
+                boxCollider = hitAbajo2.collider.GetComponent<BoxCollider2D>();
+                if (boxCollider != null)
+                {
+                    boxCollider.isTrigger = false;
+                }
+                SpriteRenderer spriteRenderer = hitAbajo2.collider.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.enabled = true;
+                }
             }
         }
+
         if (movimientoDetenido)
         {
             bajando = false;
