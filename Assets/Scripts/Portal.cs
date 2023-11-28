@@ -12,7 +12,7 @@ public class Portal : MonoBehaviour
     private plataformaOculta[] plataforma;
     private cajaOculta[] caja;
     private BackGround[] fondo;
-    private Portal[] portal;
+
     private Movimiento_Chamaco1 chamaco;
     [SerializeField] private GameObject interactionMark;
     [SerializeField] private GameManager gameManager;

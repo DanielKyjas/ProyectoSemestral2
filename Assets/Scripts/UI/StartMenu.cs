@@ -70,9 +70,9 @@ public class StartMenu : MonoBehaviour
             yield return null;
 
         }
-        if(load.isDone)
+        if (load.isDone)
         {
-        
+
             pause.SetActive(true);
             startMenu.SetActive(false);
             sliderProgress.gameObject.SetActive(false);
