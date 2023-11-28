@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int KeysObtained { get { return keysObtained; } }
+    public bool normalWorld = true;
     private int keysObtained;
 
     private void Awake()

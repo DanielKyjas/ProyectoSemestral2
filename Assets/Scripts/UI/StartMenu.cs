@@ -10,6 +10,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject pause;
     [SerializeField] private GameObject startMenu;
     [SerializeField] private Slider sliderProgress;
+ 
     private CambioCuarto loader;
     
     private bool startload = false;
@@ -71,6 +72,7 @@ public class StartMenu : MonoBehaviour
         }
         if(load.isDone)
         {
+        
             pause.SetActive(true);
             startMenu.SetActive(false);
             sliderProgress.gameObject.SetActive(false);
