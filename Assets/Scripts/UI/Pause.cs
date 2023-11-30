@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject pausebotton;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject startMenu;
+    [SerializeField] private GameObject settings;
     private Respawn chamacoRespawn;
     private bool juegoPausado = false;
     public static Pause instance;
@@ -28,7 +29,8 @@ public class Pause : MonoBehaviour
         {
             if (juegoPausado)
             {
-                Resume(); 
+                Resume();
+                settings.SetActive(false);
             }
             else
             {

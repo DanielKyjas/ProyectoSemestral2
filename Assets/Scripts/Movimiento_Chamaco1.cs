@@ -6,7 +6,7 @@ public class Movimiento_Chamaco1 : MonoBehaviour
 {
     public float velocidadMovimiento = 2.2f;
     private float fuerzaSalto = 8.5f;
-    private float velocidadCorrer = 4.5f;
+    public float velocidadCorrer = 4.5f;
     private float velocidadEmpujando = 1.2f;
     private Rigidbody2D rb;
     private bool enSuelo = true;

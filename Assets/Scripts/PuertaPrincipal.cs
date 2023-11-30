@@ -53,6 +53,7 @@ public class PuertaPrincipal : MonoBehaviour
         lineIndex = 0;
         StartCoroutine(ShowLine());
         chamaco.velocidadMovimiento = 0;
+        chamaco.velocidadCorrer = 0;
 
     }
     private void NextDialogueLine()
@@ -68,6 +69,7 @@ public class PuertaPrincipal : MonoBehaviour
             dialoguePanel.SetActive(false);
             dialogueMark.SetActive(true);
             chamaco.velocidadMovimiento = 2.2f;
+            chamaco.velocidadCorrer = 4.5f;
         }
     }
 
